@@ -60,7 +60,7 @@ spec:
   timeout: 5m
   sourceRef:
     kind: GitRepository
-    name: flux-system
+    name: osdu-developer
   path: ./software/applications/dev-sample
   prune: true
   wait: true
