@@ -30,6 +30,8 @@ spec:
     azureWorkloadIdentity:
       clientId: ""
       tenantId: ""
+    azure:
+      enabled: false
     env:
     - name: MESSAGE
       value: Hello World!
