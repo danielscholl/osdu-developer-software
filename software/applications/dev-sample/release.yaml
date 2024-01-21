@@ -11,7 +11,7 @@ spec:
       sourceRef:
         kind: GitRepository
         name: osdu-developer
-        namespace: dev-sample
+        namespace: flux-system
   interval: 5m0s
   install:
     remediation:
@@ -24,21 +24,7 @@ spec:
     service:
       type: ClusterIP
       port: 80
-    autoscaling:
-      enabled: false
-      minReplicas: 1
-      maxReplicas: 3
-      targetCPUUtilizationPercentage: 80
-    azure:
-      enabled: false
     env:
     - name: MESSAGE
       value: Hello World!
-    # - name: AZURE_TENANT_ID
-    #   secret:
-    #     name: active-directory
-    #     key: tenantid
-    # - name: WORKSPACE_ID
-    #   secret:
-    #     name: central-logging
-    #     key: workspace-id
+  
