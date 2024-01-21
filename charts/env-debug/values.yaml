@@ -11,8 +11,12 @@ service:
   targetPort: 8080
 
 serviceAccount:
-  create: false
+  create: true
   name: "" #Leave empty and it'll default to the name of the app, thanks to the _helpers.tpl
+
+azureWorkloadIdentity:
+  clientId: ""
+  tenantId: ""
 
 autoscaling:
   enabled: false
@@ -23,8 +27,8 @@ autoscaling:
 ################################################################################
 # Specify the azure environment specific values
 #
-# azure:
-#   enabled: false
+azure:
+  enabled: false
 #   tenant: <tenant_id>
 #   subscription: <subscription_id>
 #   resourcegroup: <central_resource_group>
