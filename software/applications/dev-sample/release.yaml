@@ -11,7 +11,7 @@ spec:
       sourceRef:
         kind: GitRepository
         name: osdu-developer
-        namespace: flux-system
+        namespace: osdu-developer
   interval: 5m0s
   install:
     remediation:
