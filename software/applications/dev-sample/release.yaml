@@ -24,6 +24,12 @@ spec:
     service:
       type: ClusterIP
       port: 80
+    serviceAccount:
+      create: true
+      name: ""
+    azureWorkloadIdentity:
+      clientId: ""
+      tenantId: ""
     env:
     - name: MESSAGE
       value: Hello World!
