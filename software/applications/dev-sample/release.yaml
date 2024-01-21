@@ -11,7 +11,7 @@ spec:
       sourceRef:
         kind: GitRepository
         name: osdu-developer
-        namespace: osdu-developer
+        namespace: dev-sample
   interval: 5m0s
   install:
     remediation:
