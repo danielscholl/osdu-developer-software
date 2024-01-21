@@ -4,14 +4,16 @@ kind: HelmRelease
 metadata:
   name: dev-sample
   namespace: dev-sample
+  annotations:
+    clusterconfig.azure.com/use-managed-source: "true"
 spec:
   chart:
     spec:
       chart: ./charts/env-debug
-      sourceRef:
-        kind: GitRepository
-        name: osdu-developer
-        namespace: flux-system
+      # sourceRef:
+      #   kind: GitRepository
+      #   name: osdu-developer
+      #   namespace: flux-system
   interval: 5m0s
   install:
     remediation:
