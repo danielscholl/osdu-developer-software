@@ -10,6 +10,10 @@ spec:
   chart:
     spec:
       chart: ./charts/env-debug
+      sourceRef:
+        kind: GitRepository
+        name: osdu-developer
+        namespace: flux-system
   interval: 5m0s
   install:
     remediation:
