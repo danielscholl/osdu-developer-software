@@ -30,12 +30,6 @@ spec:
     service:
       type: ClusterIP
       port: 80
-    serviceAccount:
-      create: true
-      name: ""
-    azureWorkloadIdentity:
-      clientId: ""
-      tenantId: ""
     azure:
       enabled: false
     env:
