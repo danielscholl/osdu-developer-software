@@ -35,4 +35,9 @@ spec:
     env:
     - name: MESSAGE
       value: Hello World!
+    - name: FROM_CONFIG_MAP
+      valueFrom:
+        configMapKeyRef:
+          name: env-debug-config
+          key: MESSAGE
   

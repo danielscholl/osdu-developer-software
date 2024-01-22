@@ -1,0 +1,6 @@
+azureWorkloadIdentity:
+  clientId: "11fc831a-76a6-4bad-8d4b-64379c052ea7"
+
+appConfiguration:
+  endpoint: "https://ac-service3obf45zbiiuv2.azconfig.io"
+
