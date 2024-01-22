@@ -4,6 +4,8 @@ kind: HelmRelease
 metadata:
   name: dev-sample
   namespace: default
+  annotations:
+    clusterconfig.azure.com/use-managed-source: "true"
 spec:
   chart:
     spec:
