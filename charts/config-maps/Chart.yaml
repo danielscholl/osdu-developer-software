@@ -1,6 +1,6 @@
 apiVersion: v2
-name: app-config
-description: A Chart to load the Configuration Provider YAML
+name: config-maps
+description: A chart to install ConfigMaps for Azure App Configuration
 
 # A chart can be either an 'application' or a 'library' chart.
 #

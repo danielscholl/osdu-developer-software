@@ -21,17 +21,17 @@ spec:
   targetNamespace: dev-sample
   valuesFrom:
     - kind: ConfigMap
-      name: workload-identity-values
+      name: config-map-values
       valuesKey: values.yaml
   values:
     replicaCount: 1
     nameOverride: ""
     fullnameOverride: env-debug
+    azure:
+      enabled: true
     service:
       type: ClusterIP
       port: 80
-    azure:
-      enabled: false
     env:
     - name: MESSAGE
       value: Hello World!
@@ -40,28 +40,17 @@ spec:
         configMapKeyRef:
           name: env-debug-config
           key: MESSAGE
----
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
-kind: HelmRelease
-metadata:
-  name: app-config
-  namespace: default
-  annotations:
-    clusterconfig.azure.com/use-managed-source: "true"
-spec:
-  chart:
-    spec:
-      chart: ./charts/app-config
-      sourceRef:
-        kind: GitRepository
-        name: flux-system
-        namespace: flux-system
-  interval: 5m0s
-  install:
-    remediation:
-      retries: 3
-  targetNamespace: dev-sample
-  valuesFrom:
-    - kind: ConfigMap
-      name: app-config-values
-      valuesKey: values.yaml
+    - name: WORKSPACE_KEY
+      secret:
+        name: common-secrets
+        key: workspace-key
+    - name: STORAGE_KEY
+      secret:
+        name: common-secrets
+        key: storage-key
+    - name: DATABASE_CONNECTION
+      secret:
+        name: common-secrets
+        key: database-connection
+    
+    

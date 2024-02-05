@@ -70,6 +70,7 @@ spec:
           persistentVolumeClaim:
             claimName: {{ include "env-debug.fullname" . }}-pvc
     {{- end }}
+      serviceAccountName: workload-identity-sa
       containers:
         - image: gcr.io/kuar-demo/kuard-amd64:1
           name: kuard
