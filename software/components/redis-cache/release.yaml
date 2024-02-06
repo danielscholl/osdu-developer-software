@@ -21,55 +21,55 @@ spec:
     auth:
       enabled: false
     master:
-      # tolerations:
-      #   - effect: NoSchedule
-      #     key: app
-      #     value: "cluster"
-      # affinity:
-      #   nodeAffinity:
-      #     requiredDuringSchedulingIgnoredDuringExecution:
-      #       nodeSelectorTerms:
-      #         - matchExpressions:
-      #             - key: agentpool
-      #               operator: In
-      #               values:
-      #                 - poolz1
-      #                 - poolz2
-      #                 - poolz3
-      #         - matchExpressions:
-      #             - key: topology.kubernetes.io/zone
-      #               operator: In
-      #               values:
-      #                 - eastus2-1 # THIS DEPENDS ON LOCATION
-      #                 - eastus2-2 # THIS DEPENDS ON LOCATION
-      #                 - eastus2-3 # THIS DEPENDS ON LOCATION
+      tolerations:
+        - effect: NoSchedule
+          key: app
+          value: "cluster"
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: agentpool
+                    operator: In
+                    values:
+                      - poolz1
+                      - poolz2
+                      - poolz3
+              - matchExpressions:
+                  - key: topology.kubernetes.io/zone
+                    operator: In
+                    values:
+                      - eastus2-1 # THIS DEPENDS ON LOCATION
+                      - eastus2-2 # THIS DEPENDS ON LOCATION
+                      - eastus2-3 # THIS DEPENDS ON LOCATION
       # persistence:
       #   enabled: true
       #   size: 8Gi
       replicaCount: 3
     replica:
-      # tolerations:
-      #   - effect: NoSchedule
-      #     key: app
-      #     value: "cluster"
-      # affinity:
-      #   nodeAffinity:
-      #     requiredDuringSchedulingIgnoredDuringExecution:
-      #       nodeSelectorTerms:
-      #         - matchExpressions:
-      #             - key: agentpool
-      #               operator: In
-      #               values:
-      #                 - poolz1
-      #                 - poolz2
-      #                 - poolz3
-      #         - matchExpressions:
-      #             - key: topology.kubernetes.io/zone
-      #               operator: In
-      #               values:
-      #                 - eastus2-1 # THIS DEPENDS ON LOCATION
-      #                 - eastus2-2 # THIS DEPENDS ON LOCATION
-      #                 - eastus2-3 # THIS DEPENDS ON LOCATION
+      tolerations:
+        - effect: NoSchedule
+          key: app
+          value: "cluster"
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: agentpool
+                    operator: In
+                    values:
+                      - poolz1
+                      - poolz2
+                      - poolz3
+              - matchExpressions:
+                  - key: topology.kubernetes.io/zone
+                    operator: In
+                    values:
+                      - eastus2-1 # THIS DEPENDS ON LOCATION
+                      - eastus2-2 # THIS DEPENDS ON LOCATION
+                      - eastus2-3 # THIS DEPENDS ON LOCATION
       # persistence:
       #   enabled: true
       #   size: 8Gi
