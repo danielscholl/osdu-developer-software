@@ -1,0 +1,22 @@
+apiVersion: helm.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: redis
+  namespace: redis
+  annotations:
+    fluxcd.io/automated: "true"
+    fluxcd.io/locked: "true"
+spec:
+  releaseName: redis
+  chart:
+  sourceRef:
+    kind: HelmRepository
+    name: redis-cache
+  values:
+    usePassword: true
+    master:
+      service:
+        type: ClusterIP
+        port: 6379
+    cluster:
+      enabled: true
