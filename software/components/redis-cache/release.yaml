@@ -15,7 +15,7 @@ spec:
         namespace: redis-cache
       interval: 12h
   values:
-    usePassword: true
+    usePassword: false
     master:
       service:
         type: ClusterIP
