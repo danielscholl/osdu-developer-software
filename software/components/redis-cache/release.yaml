@@ -1,24 +1,24 @@
-# ---
-# apiVersion: helm.toolkit.fluxcd.io/v2beta1
-# kind: HelmRelease
-# metadata:
-#   name: redis-cache
-#   namespace: redis-cache
-# spec:
-#   interval: 30m
-#   chart:
-#     spec:
-#       chart: redis-cache
-#       sourceRef:
-#         kind: HelmRepository
-#         name: redis-cache
-#         namespace: redis-cache
-#       interval: 12h
-#   values:
-#     usePassword: true
-#     master:
-#       service:
-#         type: ClusterIP
-#         port: 6379
-#     cluster:
-#       enabled: true
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: redis-cache
+  namespace: redis-cache
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: redis
+      sourceRef:
+        kind: HelmRepository
+        name: redis-cache
+        namespace: redis-cache
+      interval: 12h
+  values:
+    usePassword: true
+    master:
+      service:
+        type: ClusterIP
+        port: 6379
+    cluster:
+      enabled: true
