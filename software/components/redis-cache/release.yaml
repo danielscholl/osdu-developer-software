@@ -2,23 +2,38 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: redis-cache
+  name: redis
   namespace: redis-cache
 spec:
-  interval: 30m
   chart:
     spec:
       chart: redis
       sourceRef:
         kind: HelmRepository
-        name: redis-cache
+        name: redis
         namespace: redis-cache
-      interval: 12h
+  install:
+    remediation:
+      retries: 3
+  interval: 10m0s
+  releaseName: redis
   values:
-    usePassword: false
-    master:
-      service:
-        type: ClusterIP
-        port: 6379
-    cluster:
-      enabled: true
+    # auth:
+    #   existingSecret: redis-auth-secret
+    # master:
+    #   nodeSelector:
+    #     workload_type: application_linux
+    #   persistence:
+    #     existingClaim: redis-cluster-pvc
+    #   service:
+    #     annotations:
+    #       service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+    #     type: LoadBalancer
+    # replica:
+    #   nodeSelector:
+    #     workload_type: application_linux
+    #   replicaCount: 1
+    #   service:
+    #     annotations:
+    #       service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+    #     type: LoadBalancer
