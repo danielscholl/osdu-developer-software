@@ -18,22 +18,19 @@ spec:
   interval: 10m0s
   releaseName: redis
   values:
-    # auth:
-    #   existingSecret: redis-auth-secret
-    # master:
-    #   nodeSelector:
-    #     workload_type: application_linux
-    #   persistence:
-    #     existingClaim: redis-cluster-pvc
-    #   service:
-    #     annotations:
-    #       service.beta.kubernetes.io/azure-load-balancer-internal: "true"
-    #     type: LoadBalancer
-    # replica:
-    #   nodeSelector:
-    #     workload_type: application_linux
-    #   replicaCount: 1
-    #   service:
-    #     annotations:
-    #       service.beta.kubernetes.io/azure-load-balancer-internal: "true"
-    #     type: LoadBalancer
+    auth:
+      enabled: false
+    master:
+      nodeSelector:
+        app: cluster
+      persistence:
+        enabled: true
+        size: 8Gi
+      replicaCount: 3
+    replica:
+      nodeSelector:
+        app: cluster
+      persistence:
+        enabled: true
+        size: 8Gi
+      replicaCount: 1
