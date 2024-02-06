@@ -1,17 +1,19 @@
-apiVersion: helm.fluxcd.io/v2beta2
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: redis
-  namespace: redis
-  annotations:
-    fluxcd.io/automated: "true"
-    fluxcd.io/locked: "true"
+  name: redis-cache
+  namespace: redis-cache
 spec:
-  releaseName: redis
+  interval: 30m
   chart:
-  sourceRef:
-    kind: HelmRepository
-    name: redis-cache
+    spec:
+      chart: redis-cache
+      sourceRef:
+        kind: HelmRepository
+        name: redis-cache
+        namespace: redis-cache
+      interval: 12h
   values:
     usePassword: true
     master:
