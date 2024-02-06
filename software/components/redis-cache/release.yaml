@@ -23,6 +23,7 @@ spec:
     master:
       nodeSelector:
         app: cluster
+      tolerations: ['app=cluster:NoSchedule']
       # persistence:
       #   enabled: true
       #   size: 8Gi
@@ -30,6 +31,7 @@ spec:
     replica:
       nodeSelector:
         app: cluster
+      tolerations: ['app=cluster:NoSchedule']
       # persistence:
       #   enabled: true
       #   size: 8Gi
