@@ -21,16 +21,16 @@ spec:
     auth:
       enabled: false
     master:
-      nodeSelector:
-        app: cluster
-      persistence:
-        enabled: true
-        size: 8Gi
+      # nodeSelector:
+      #   app: cluster
+      # persistence:
+      #   enabled: true
+      #   size: 8Gi
       replicaCount: 3
     replica:
-      nodeSelector:
-        app: cluster
-      persistence:
-        enabled: true
-        size: 8Gi
+      # nodeSelector:
+      #   app: cluster
+      # persistence:
+      #   enabled: true
+      #   size: 8Gi
       replicaCount: 1
