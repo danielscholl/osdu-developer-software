@@ -90,7 +90,9 @@ spec:
                       - eastus2-1 # THIS DEPENDS ON LOCATION
                       - eastus2-2 # THIS DEPENDS ON LOCATION
                       - eastus2-3 # THIS DEPENDS ON LOCATION
-      # persistence:
-      #   enabled: true
-      #   size: 8Gi
+      persistence:
+        enabled: true
+        size: 8Gi
+        accessModes:
+        - ReadWriteOnce
       replicaCount: 1

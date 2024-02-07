@@ -34,10 +34,13 @@ spec:
   path: ./software/components/redis-cache
   prune: true
   wait: true
-  # healthChecks:
-  #   - kind: Deployment
-  #     name: cert-manager
-  #     namespace: cert-manager
+  healthChecks:
+    - kind: StatefulSet
+      name: redis-master
+      namespace: redis-cache
+    - kind: StatefulSet
+      name: redis-replicas
+      namespace: redis-cache
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
