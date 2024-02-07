@@ -18,9 +18,29 @@ spec:
   interval: 10m0s
   releaseName: redis
   values:
+    cluster:
+      enabled: true
+      slaveCount: 3
     auth:
       enabled: false
     master:
+      port: 6379
+      service:
+        type: ClusterIP
+      livenessProbe:
+        enabled: true
+        initialDelaySeconds: 30
+        periodSeconds: 10
+        timeoutSeconds: 5
+        successThreshold: 1
+        failureThreshold: 5
+      readinessProbe:
+        enabled: true
+        initialDelaySeconds: 5
+        periodSeconds: 10
+        timeoutSeconds: 1
+        successThreshold: 1
+        failureThreshold: 5
       tolerations:
         - effect: NoSchedule
           key: app
