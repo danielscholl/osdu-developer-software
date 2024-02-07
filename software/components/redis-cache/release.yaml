@@ -56,19 +56,19 @@ spec:
                       - poolz1
                       - poolz2
                       - poolz3
-              # - matchExpressions:
-              #     - key: topology.kubernetes.io/zone
-              #       operator: In
-              #       values:
-              #         - eastus2-1 # THIS DEPENDS ON LOCATION
-              #         - eastus2-2 # THIS DEPENDS ON LOCATION
-              #         - eastus2-3 # THIS DEPENDS ON LOCATION
+              - matchExpressions:
+                  - key: topology.kubernetes.io/zone
+                    operator: In
+                    values:
+                      - eastus2-1 # THIS DEPENDS ON LOCATION
+                      - eastus2-2 # THIS DEPENDS ON LOCATION
+                      - eastus2-3 # THIS DEPENDS ON LOCATION
       persistence:
         enabled: true
         size: 8Gi
         accessModes:
         - ReadWriteOnce
-      replicaCount: 3
+      replicaCount: 1
     replica:
       tolerations:
         - effect: NoSchedule
@@ -85,16 +85,16 @@ spec:
                       - poolz1
                       - poolz2
                       - poolz3
-              # - matchExpressions:
-              #     - key: topology.kubernetes.io/zone
-              #       operator: In
-              #       values:
-              #         - eastus2-1 # THIS DEPENDS ON LOCATION
-              #         - eastus2-2 # THIS DEPENDS ON LOCATION
-              #         - eastus2-3 # THIS DEPENDS ON LOCATION
+              - matchExpressions:
+                  - key: topology.kubernetes.io/zone
+                    operator: In
+                    values:
+                      - eastus2-1 # THIS DEPENDS ON LOCATION
+                      - eastus2-2 # THIS DEPENDS ON LOCATION
+                      - eastus2-3 # THIS DEPENDS ON LOCATION
       persistence:
         enabled: true
         size: 8Gi
         accessModes:
         - ReadWriteOnce
-      replicaCount: 3
+      replicaCount: 1
