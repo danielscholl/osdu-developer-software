@@ -18,3 +18,6 @@ type: application
 description: Installs the OSDU developer Base Components
 version: 0.1.0
 appVersion: 0.1.0
+maintainers:
+  - name: danielscholl
+    url: https://github.com/danielscholl

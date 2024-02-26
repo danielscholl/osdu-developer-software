@@ -10,7 +10,7 @@
 #   releaseName: partition-service
 #   chart:
 #     spec:
-#       chart: ./charts/self-managed-service
+#       chart: ./charts/osdu-developer-service
 #       sourceRef:
 #         kind: GitRepository
 #         name: flux-system

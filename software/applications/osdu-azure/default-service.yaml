@@ -8,12 +8,12 @@ metadata:
     clusterconfig.azure.com/use-managed-source: "true"
 spec:
   releaseName: default-service
-  # dependsOn:
-  # - name: self-managed-base
-  #   namespace: env-debug
+  dependsOn:
+  - name: osdu-developer-base
+    namespace: default
   chart:
     spec:
-      chart: ./charts/self-managed-service
+      chart: ./charts/osdu-developer-service
       sourceRef:
         kind: GitRepository
         name: flux-system
