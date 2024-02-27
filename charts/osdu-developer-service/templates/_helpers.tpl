@@ -50,3 +50,14 @@ Selector labels
 app.kubernetes.io/name: {{ include "osdu-developer-service.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
+
+{{/*
+Create the name of the service account to use
+*/}}
+{{- define "osdu-developer-service.serviceAccountName" -}}
+{{- if .Values.serviceAccount.create }}
+{{- default (include "osdu-developer-service.fullname" .) .Values.serviceAccount.name }}
+{{- else }}
+{{- default "default" .Values.serviceAccount.name }}
+{{- end }}
+{{- end }}

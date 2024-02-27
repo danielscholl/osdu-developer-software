@@ -85,6 +85,7 @@ spec:
           persistentVolumeClaim:
             claimName: {{ .name }}-pvc
       {{- end }}
+      serviceAccountName: workload-identity-sa
       containers:
         - name: {{ or .service .scaledObject }}
           image: {{ .repository }}:{{ .tag | default $version }}
