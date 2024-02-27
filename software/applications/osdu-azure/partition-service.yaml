@@ -73,23 +73,19 @@ spec:
         value: "true"
       - name: REDIS_DATABASE
         value: "1"
-      valuesFrom:
-      - kind: ConfigMap
-        name: configmap-services
-        valuesKey: values.yaml
-      # - name: azure_activedirectory_AppIdUri
-      #   valueFrom:
-      #     configMapKeyRef:
-      #       name: configmap-services
-      #       key: azure_activedirectory_AppIdUri
-      # - name: aad_client_id
-      #   valueFrom:
-      #     configMapKeyRef:
-      #       name: configmap-services
-      #       key: aad_client_id
-      # - name: KEYVAULT_URI
-      #   valueFrom:
-      #     configMapKeyRef:
-      #       name: configmap-services
-      #       key: keyvault_uri
+      - name: azure_activedirectory_AppIdUri
+        valueFrom:
+          configMapKeyRef:
+            name: configmap-services
+            key: appid_uri
+      - name: aad_client_id
+        valueFrom:
+          configMapKeyRef:
+            name: configmap-services
+            key: client_id
+      - name: KEYVAULT_URI
+        valueFrom:
+          configMapKeyRef:
+            name: configmap-services
+            key: keyvault_uri
       
