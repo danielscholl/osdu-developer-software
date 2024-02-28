@@ -417,6 +417,8 @@ spec:
     #       name: azure-resources
     #       key: keyvault-uri
 
+########################################
+###############  File  #################
     - service: file
       repository: community.opengroup.org:5555/osdu/platform/system/file/file-azure-m18-master
       tag: latest
