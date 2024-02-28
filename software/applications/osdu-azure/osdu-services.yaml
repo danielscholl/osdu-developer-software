@@ -195,8 +195,6 @@ spec:
           - "*/actuator/health"
           - "*/health"
       env:
-      - name: LOGGING_LEVEL
-        value: "INFO"
       - name: spring_application_name
         value: "legal"
       - name: server.servlet.contextPath
@@ -273,8 +271,6 @@ spec:
 #           - "*/actuator/health"
 #           - "*/health"
 #       env:
-#       - name: LOGGING_LEVEL
-#         value: "INFO"
 #       - name: spring_application_name
 #         value: schema
 #       - name: server.servlet.contextPath
