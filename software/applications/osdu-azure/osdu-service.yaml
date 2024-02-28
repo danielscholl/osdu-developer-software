@@ -144,7 +144,7 @@ spec:
       - name: azure_istioauth_enabled
         value: "true"
       - name: azure_activedirectory_AppIdUri
-        value: "api://$(az keyvault secret show --id https://${ENV_VAULT}.vault.azure.net/secrets/aad-client-id --query value -otsv)"
+        value: "api://"
       - name: azure_paas_podIdentity_isEnabled
         value: "false"
       - name: azure_msi_client_id
@@ -226,7 +226,9 @@ spec:
       - name: SPRING_CONFIG_NAME
         value: "common,application"
       - name: azure_paas_podIdentity_isEnabled
-        value: "false"
+        value: "true"
+      - name: aad_client_id
+        value: "api://"
       - name: REDIS_DATABASE
         value: "2"
       - name: AZURE_TENANT_ID
