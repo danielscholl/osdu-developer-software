@@ -3,11 +3,13 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: osdu-services
-  namespace: osdu-azure
+  namespace: default
   annotations:
     clusterconfig.azure.com/use-managed-source: "true"
 spec:
-  releaseName: osdu-services
+  dependsOn:
+  - name: osdu-developer-base
+    namespace: default
   chart:
     spec:
       chart: ./charts/osdu-developer-service
@@ -82,6 +84,7 @@ spec:
           configMapKeyRef:
             name: configmap-services
             key: azure_msi_client_id
+
       - name: KEYVAULT_URI
         valueFrom:
           configMapKeyRef:
