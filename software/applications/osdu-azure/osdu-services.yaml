@@ -122,28 +122,32 @@ spec:
           - "/api/entitlements/v2/swagger-resources/*"
           - "/api/entitlements/v2/webjars/*"
       env:
-      - name: spring_application_name
-        value: "entitlements"
-      - name: server.servlet.contextPath
-        value: "/api/entitlements/v2/"
       - name: LOGGING_LEVEL
         value: "INFO"
+      - name: spring_application_name
+        value: entitlements
+      - name: server.servlet.contextPath
+        value: /api/entitlements/v2/
       - name: server_port
-        value: "80"
+        value: '80'
       - name: service_domain_name
-        value: "contoso.com"
+        value: dataservices.energy
       - name: root_data_group_quota
-        value: "5000"
+        value: '5000'
       - name: redis_ttl_seconds
-        value: "1"
+        value: '60'
       - name: partition_service_endpoint
-        value: "http://partition/api/partition/v1"
+        value: http://partition/api/partition/v1
       - name: azure_istioauth_enabled
-        value: "true"
+        value: 'true'
+      - name: azure_istio_corsEnabled
+        value: 'false'
+      - name: SPRING_CONFIG_NAME
+        value: common,application
       - name: azure_activedirectory_AppIdUri
-        value: "api://"
+        value: api://
       - name: azure_paas_podIdentity_isEnabled
-        value: "false"
+        value: 'true'
       - name: azure_msi_client_id
         secret:
           name: active-directory
