@@ -25,11 +25,9 @@ spec:
   targetNamespace: osdu-azure
   values:
     replicaCount: 1
-
     service:
       type: ClusterIP
       port: 80
-
     configuration:
     - service: partition
       repository: community.opengroup.org:5555/osdu/platform/system/partition/partition-azure-m18-master
@@ -99,7 +97,6 @@ spec:
         secret:
           name: azure-resources
           key: keyvault-uri
-
 ########################################
 ############  ENTITLEMENTS  ############
     - service: entitlements
@@ -167,7 +164,6 @@ spec:
         secret:
           name: azure-resources
           key: keyvault-uri
-
 ########################################
 ###############  LEGAL  ################
     - service: legal
@@ -247,7 +243,6 @@ spec:
         secret:
           name: azure-resources
           key: keyvault-uri
-
 ########################################
 ###############  SCHEMA  ###############
     - service: schema
@@ -318,9 +313,6 @@ spec:
         secret:
           name: azure-resources
           key: keyvault-uri
-
-
-
 ########################################
 ###############  STORAGE  ##############
     # - service: storage
