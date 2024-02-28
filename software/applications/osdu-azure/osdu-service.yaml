@@ -101,7 +101,8 @@ spec:
           key: keyvault-uri
 
     - service: entitlements
-      repository: community.opengroup.org:5555/osdu/platform/security-and-compliance/entitlements/entitlements-azure-m18-master:latest
+      repository: community.opengroup.org:5555/osdu/platform/security-and-compliance/entitlements/entitlements-azure-m18-master
+      tag: latest
       path: /api/entitlements/v2/*
       probe:
         path: /api/entitlements/v2/_ah/readiness_check
