@@ -286,7 +286,7 @@ spec:
       - name: partition_service_endpoint
         value: "http://partition/api/partition/v1"
       - name: shared_partition
-        value: "${{ env.PARTITION_NAME }}"
+        value: "opendes"
       - name: azure_istioauth_enabled
         value: "true"
       - name: event_grid_enabled
