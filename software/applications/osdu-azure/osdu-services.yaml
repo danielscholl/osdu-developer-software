@@ -297,6 +297,12 @@ spec:
         value: "false"
       - name: aad_client_id
         value: "api://"
+      - name: servicebus_topic_name
+        value: schemachangedtopic
+      - name: event_grid_enabled
+        value: 'false'
+      - name: service_bus_enabled
+        value: 'true'
       - name: AZURE_TENANT_ID
         secret:
           name: active-directory
