@@ -255,17 +255,16 @@ spec:
       keyvault: true
       auth:
         disable:
-          - "/"
-          - "*/index.html"
-          - "*/v2/api-docs"
-          - "*/swagger-resources"
-          - "*/swagger-ui.html"
-          - "*/configuration/ui"
-          - "*/configuration/security"
-          - "/api/schema-service/v1/swagger-resources/*"
-          - "/api/schema-service/v1/webjars/*"
-          - "*/actuator/health"
-          - "*/health"
+        - "*/index.html"
+        - "*/swagger"
+        - "/api/schema-service/v1/swagger-ui/*"
+        - "/api/schema-service/v1/v3/api-docs/*"
+        - "*/swagger-config"
+        - "*/v1/api-docs"
+        - "*/api-docs.yaml"
+        - "*/actuator/health"
+        - "*/_ah/**"
+        - "/api/schema-service/v1/info"
       env:
       - name: spring_application_name
         value: "schema"
