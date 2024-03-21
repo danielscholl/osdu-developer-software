@@ -39,28 +39,28 @@ spec:
   # values:
   #   hub: "docker.io/istio"
   #   tag: "1.19.6"
----
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
-kind: HelmRelease
-metadata:
-  name: kiali-operator
-  namespace: istio-system
-spec:
-  releaseName: kiali-operator
-  chart:
-    spec:
-      chart: kiali/kiali-operator
-      sourceRef:
-        kind: HelmRepository
-        name: kiali
-        namespace: istio-system
-  interval: 1h0m0s
-  install:
-    remediation:
-      retries: 3
-  values:
-    cr:
-      create: true
+# ---
+# apiVersion: helm.toolkit.fluxcd.io/v2beta1
+# kind: HelmRelease
+# metadata:
+#   name: kiali-operator
+#   namespace: istio-system
+# spec:
+#   releaseName: kiali-operator
+#   chart:
+#     spec:
+#       chart: kiali/kiali-operator
+#       sourceRef:
+#         kind: HelmRepository
+#         name: kiali
+#         namespace: istio-system
+#   interval: 1h0m0s
+#   install:
+#     remediation:
+#       retries: 3
+#   values:
+#     cr:
+#       create: true
 
 # ---
 # apiVersion: helm.toolkit.fluxcd.io/v2beta1
