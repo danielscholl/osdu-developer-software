@@ -58,11 +58,9 @@ spec:
   install:
     remediation:
       retries: 3
-  # targetNamespace: kiali-operator
   values:
     cr:
       create: true
-      namespace: istio-system
 
 # ---
 # apiVersion: helm.toolkit.fluxcd.io/v2beta1
