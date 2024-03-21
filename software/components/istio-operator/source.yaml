@@ -9,13 +9,23 @@ spec:
   url: https://github.com/istio/istio
   ref:
     branch: master
-    tag: 1.19.6
 ---
 apiVersion: source.toolkit.fluxcd.io/v1beta1
-kind: HelmRepository
+kind: GitRepository
 metadata:
   name: kiali
   namespace: istio-system
 spec:
-  interval: 1h
-  url: https://kiali.org/helm-charts
+  interval: 30m
+  url: https://github.com/kiali/helm-charts
+  ref:
+    branch: master
+
+# apiVersion: source.toolkit.fluxcd.io/v1beta1
+# kind: HelmRepository
+# metadata:
+#   name: kiali
+#   namespace: istio-system
+# spec:
+#   interval: 1h
+#   url: https://kiali.org/helm-charts
