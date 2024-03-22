@@ -3,16 +3,16 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: kiali-operator
-  namespace: istio-system
+  namespace: kiali-operator
 spec:
   releaseName: kiali-operator
   chart:
     spec:
       chart: kiali-operator
       sourceRef:
-        kind: GitRepository
+        kind: HelmRepository
         name: kiali
-        namespace: istio-system
+        namespace: kiali-operator
   interval: 1h0m0s
   install:
     remediation:
