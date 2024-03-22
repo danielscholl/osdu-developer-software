@@ -1,0 +1,20 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: kiali
+  namespace: istio-system
+spec:
+  interval: 30m
+  url: https://kiali.org/helm-charts
+# ---
+# apiVersion: source.toolkit.fluxcd.io/v1beta1
+# kind: GitRepository
+# metadata:
+#   name: kiali
+#   namespace: istio-system
+# spec:
+#   interval: 30m
+#   url: https://github.com/kiali/helm-charts
+#   ref:
+#     branch: master
