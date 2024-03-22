@@ -23,4 +23,9 @@ spec:
       tag: latest
     cr:
       namespace: istio-system
+      istio_namespace: istio-system
       create: true
+      deployment:
+        namespace: kiali-operator
+      auth:
+        strategy: anonymous
