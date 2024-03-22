@@ -60,6 +60,7 @@ spec:
       repo: quay.io/kiali/kiali-operator
       tag: latest
     cr:
+      namespace: istio-system
       create: true
 
 
