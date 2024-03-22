@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: istio-base
-  namespace: default
+  namespace: istio-operator
 spec:
   releaseName: istio-base
   chart:
@@ -22,7 +22,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: istio-operator
-  namespace: default
+  namespace: istio-operator
 spec:
   releaseName: istio-operator
   chart:

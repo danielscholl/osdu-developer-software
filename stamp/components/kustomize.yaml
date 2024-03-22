@@ -96,71 +96,71 @@ spec:
   path: ./software/configuration/config-maps
   prune: true
   wait: true
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-kind: Kustomization
-metadata:
-  name: software-component-istio
-  namespace: flux-system
-spec:
-  dependsOn:
-    - name: software-component-certificates
-  interval: 1h
-  retryInterval: 1m
-  timeout: 5m
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./software/components/istio-operator
-  prune: true
-  wait: true
-  healthChecks:
-    - kind: Deployment
-      name: istiod
-      namespace: istio-system
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-kind: Kustomization
-metadata:
-  name: software-configuration-istio
-  namespace: flux-system
-spec:
-  dependsOn:
-    - name: software-component-istio
-  interval: 1h
-  retryInterval: 1m
-  timeout: 5m
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./software/configuration/istio-profile
-  prune: true
-  healthChecks:
-    - kind: Deployment
-      name: aks-istio-ingressgateway-external
-      namespace: istio-system
-    - kind: Deployment
-      name: aks-istio-ingressgateway-internal
-      namespace: istio-system
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-kind: Kustomization
-metadata:
-  name: software-component-kiali
-  namespace: flux-system
-spec:
-  dependsOn:
-    - name: software-configuration-istio
-  interval: 1h
-  retryInterval: 1m
-  timeout: 5m
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./software/components/kiali-operator
-  prune: true
-  wait: true
-  healthChecks:
-    - kind: Deployment
-      name: kiali-operator
-      namespace: kiali-operator
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+# kind: Kustomization
+# metadata:
+#   name: software-component-istio
+#   namespace: flux-system
+# spec:
+#   dependsOn:
+#     - name: software-component-certificates
+#   interval: 1h
+#   retryInterval: 1m
+#   timeout: 5m
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./software/components/istio-operator
+#   prune: true
+#   wait: true
+#   healthChecks:
+#     - kind: Deployment
+#       name: istiod
+#       namespace: istio-system
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+# kind: Kustomization
+# metadata:
+#   name: software-configuration-istio
+#   namespace: flux-system
+# spec:
+#   dependsOn:
+#     - name: software-component-istio
+#   interval: 1h
+#   retryInterval: 1m
+#   timeout: 5m
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./software/configuration/istio-profile
+#   prune: true
+#   healthChecks:
+#     - kind: Deployment
+#       name: aks-istio-ingressgateway-external
+#       namespace: istio-system
+#     - kind: Deployment
+#       name: aks-istio-ingressgateway-internal
+#       namespace: istio-system
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+# kind: Kustomization
+# metadata:
+#   name: software-component-kiali
+#   namespace: flux-system
+# spec:
+#   dependsOn:
+#     - name: software-configuration-istio
+#   interval: 1h
+#   retryInterval: 1m
+#   timeout: 5m
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./software/components/kiali-operator
+#   prune: true
+#   wait: true
+#   healthChecks:
+#     - kind: Deployment
+#       name: kiali-operator
+#       namespace: kiali-operator
