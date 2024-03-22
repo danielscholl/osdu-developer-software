@@ -23,25 +23,11 @@ spec:
             minReplicas: 1
           serviceAnnotations:
             service.beta.kubernetes.io/azure-load-balancer-internal: "true"
-          service:
-          - port:
-              number: 80
-              name: http
-              protocol: HTTP
-            hosts:
-              - "*"
       - name: aks-istio-ingressgateway-external
         enabled: true
         k8s:
           hpaSpec:
             minReplicas: 1
-          service:
-          - port:
-              number: 80
-              name: http
-              protocol: HTTP
-            hosts:
-              - "*"
     egressGateways:
       - name: istio-egressgateway
         enabled: false
