@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: kiali-operator
-  namespace: kiali-operator
+  namespace: istio-system
 spec:
   releaseName: kiali-operator
   chart:
@@ -12,7 +12,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: kiali
-        namespace: kiali-operator
+        namespace: istio-system
   interval: 1h0m0s
   install:
     remediation:
@@ -24,22 +24,3 @@ spec:
     cr:
       namespace: istio-system
       create: true
-
-
-# apiVersion: helm.fluxcd.io/v1
-# kind: HelmRelease
-# metadata:
-#   name: kiali
-# spec:
-#   releaseName: kiali
-#   chart:
-#     repository: https://kiali.org/helm-charts
-#     name: kiali-server
-#     version: 1.25.0
-#   values:
-#     auth:
-#       strategy: token
-#     deployment:
-#       ingress_enabled: false
-#       replicas: 3
-#       view_only_mode: true
