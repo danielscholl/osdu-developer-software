@@ -46,7 +46,7 @@ spec:
   releaseName: kiali-operator
   chart:
     spec:
-      chart: kiali-operator
+      chart: kiali/kiali-operator
       sourceRef:
         kind: GitRepository
         name: kiali
