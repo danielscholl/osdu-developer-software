@@ -21,8 +21,8 @@ spec:
     image:
       repo: quay.io/kiali/kiali-operator
       tag: latest
-    cr:
-      namespace: istio-system
-      create: true
-      auth:
-        strategy: anonymous
+    # cr:
+    #   namespace: istio-system
+    #   create: true
+    #   auth:
+    #     strategy: anonymous
