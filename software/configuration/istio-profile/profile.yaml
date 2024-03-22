@@ -14,7 +14,14 @@ spec:
     cni:
       enabled: false
     ingressGateways:
-      - name: istio-ingressgateway
+      - name: aks-istio-ingressgateway-internal
+        enabled: true
+        k8s:
+          hpaSpec:
+            minReplicas: 2
+          serviceAnnotations:
+            service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+      - name: aks-istio-ingressgateway-external
         enabled: true
         k8s:
           hpaSpec:
@@ -22,3 +29,4 @@ spec:
     egressGateways:
       - name: istio-egressgateway
         enabled: false
+
