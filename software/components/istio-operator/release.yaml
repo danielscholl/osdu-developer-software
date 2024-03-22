@@ -56,6 +56,9 @@ spec:
     remediation:
       retries: 3
   values:
+    image:
+      repo: quay.io/kiali/kiali-operator
+      tag: latest
     cr:
       create: true
 
