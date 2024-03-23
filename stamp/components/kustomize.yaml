@@ -151,11 +151,11 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: software-configuration-istio
+  name: software-configuration-mesh
   namespace: flux-system
 spec:
   dependsOn:
-    - name: software-component-istio
+    - name: software-component-mesh
   interval: 1h
   retryInterval: 1m
   timeout: 5m
@@ -175,11 +175,11 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: software-configuration-istio-ingress
+  name: software-configuration-mesh-ingress
   namespace: flux-system
 spec:
   dependsOn:
-    - name: software-configuration-istio
+    - name: software-configuration-mesh
   interval: 1h
   retryInterval: 1m
   timeout: 5m
