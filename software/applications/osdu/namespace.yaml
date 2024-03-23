@@ -4,5 +4,5 @@ kind: Namespace
 metadata:
   labels:
     istio-injection: enabled
-    # istio.io/rev: asm-1-19
   name: osdu-azure
+  
