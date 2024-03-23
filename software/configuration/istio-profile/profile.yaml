@@ -53,13 +53,24 @@ spec:
             minReplicas: 1
     egressGateways:
       - name: istio-egressgateway
-        enabled: true
+        enabled: false
     values:
       global:
+        istiod:
+          enableAnalysis: true
         proxy:
           resources:
             limits:
               memory: 100Mi
             requests:
               memory: 100Mi
+      cni:
+        excludeNamespaces:
+          - istio-system
+          - kube-system
+      pilot:
+        env:
+          PILOT_ENABLE_STATUS: true
+      sidecarInjectorWebhook:
+        rewriteAppHTTPProbe: true
 
