@@ -19,6 +19,9 @@ spec:
         protocol: HTTPs
       hosts:
         - "*"
+      tls:
+        mode: SIMPLE
+        credentialName: istio-ingress-cert
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
@@ -41,3 +44,6 @@ spec:
         protocol: HTTPs
       hosts:
         - "*"
+      tls:
+        mode: SIMPLE
+        credentialName: istio-ingress-cert
