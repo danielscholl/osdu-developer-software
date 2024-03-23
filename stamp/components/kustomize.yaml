@@ -129,7 +129,7 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: software-component-istio
+  name: software-component-mesh
   namespace: flux-system
 spec:
   dependsOn:
@@ -140,7 +140,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./software/components/istio-operator
+  path: ./software/components/service-mesh
   prune: true
   wait: true
   healthChecks:
