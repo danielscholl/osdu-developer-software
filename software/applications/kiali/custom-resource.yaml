@@ -19,6 +19,7 @@ spec:
   external_services:
     grafana:
       in_cluster_url: http://prometheus-operator-grafana.monitoring.svc:80
+      url: http://prometheus-operator-grafana.monitoring.svc:80
     prometheus:
       url: http://prometheus-operated.monitoring.svc:9090
     # tracing:
