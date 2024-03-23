@@ -17,3 +17,9 @@ spec:
   install:
     remediation:
       retries: 3
+  values:
+    prometheusOperator:
+      tolerations:
+        - effect: NoSchedule
+          key: app
+          value: "cluster"
