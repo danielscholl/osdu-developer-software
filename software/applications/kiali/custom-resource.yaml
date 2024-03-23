@@ -19,7 +19,7 @@ spec:
   external_services:
     grafana:
       url: http://prometheus-operator-grafana.monitoring.svc.cluster.local:80
-    prometheus_config:
-      url: http://prometheus-operated.monitor.monitoring.cluster.local:9090
+    prometheus:
+      url: http://prometheus-operated.monitoring.cluster.local:9090
     # tracing:
     #   url: http://jaeger-query:16686
