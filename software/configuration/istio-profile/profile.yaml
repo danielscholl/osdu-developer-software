@@ -25,8 +25,10 @@ spec:
       - name: istio-ingressgateway
         enabled: true
         k8s:
+          serviceAnnotations:
+            service.beta.kubernetes.io/azure-load-balancer-internal: "true"
           hpaSpec:
-            minReplicas: 2
+            minReplicas: 1
           overlays:
             - apiVersion: v1
               kind: Service
@@ -34,18 +36,12 @@ spec:
               patches:
                 - path: spec.ports
                   value:
-                    - name: status-port
-                      port: 15021
-                      targetPort: 15021
-                      protocol: TCP
+                    - name: http
+                      number: 80
+                      protocol: HTTP
                     - name: http2
-                      port: 80
-                      targetPort: 8080
-                      protocol: TCP
-                    - name: https
-                      port: 443
-                      targetPort: 8443
-                      protocol: TCP
+                      number: 443
+                      protocol: HTTPS
       - name: istio-ingressgateway-external
         enabled: true
         k8s:
