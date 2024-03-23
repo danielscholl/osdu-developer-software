@@ -146,7 +146,7 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: software-configuration-istio-gateway
+  name: software-configuration-istio-ingress
   namespace: flux-system
 spec:
   dependsOn:
@@ -157,7 +157,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./software/components/istio-ingress
+  path: ./software/configuration/istio-ingress
   prune: true
   wait: true
   healthChecks:
@@ -175,7 +175,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: software-configuration-istio-gateway
+    - name: software-configuration-istio-ingress
   interval: 1h
   retryInterval: 1m
   timeout: 5m
