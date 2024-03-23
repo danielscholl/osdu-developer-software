@@ -23,3 +23,13 @@ spec:
         - effect: NoSchedule
           key: app
           value: "cluster"
+    kube-state-metrics:
+      tolerations:
+        - effect: NoSchedule
+          key: app
+          value: "cluster"
+    grafana:
+      tolerations:
+        - effect: NoSchedule
+          key: app
+          value: "cluster"
