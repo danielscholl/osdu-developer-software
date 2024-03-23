@@ -16,3 +16,10 @@ spec:
   server:
     profiler:
       enabled: false
+  external_services:
+    grafana:
+      url: http://prometheus-operator-grafana.monitor.svc.cluster.local:80
+    prometheus:
+      url: http://prometheus-operated.monitor.svc.cluster.local:9090
+    # tracing:
+    #   url: http://jaeger-query:16686

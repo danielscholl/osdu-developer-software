@@ -15,6 +15,6 @@ spec:
             prefix: "/"
       route:
         - destination:
-            host: "podinfo.podinfo.svc.cluster.local"
+            host: podinfo.podinfo.svc.cluster.local
             port:
               number: 9898
