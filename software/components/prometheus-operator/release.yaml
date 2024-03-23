@@ -19,10 +19,11 @@ spec:
       retries: 3
   values:
     alertmanager:
-      tolerations:
-        - effect: NoSchedule
-          key: app
-          value: "cluster"
+      alertmanagerSpec:
+        tolerations:
+          - effect: NoSchedule
+            key: app
+            value: "cluster"
     prometheusOperator:
       tolerations:
         - effect: NoSchedule
