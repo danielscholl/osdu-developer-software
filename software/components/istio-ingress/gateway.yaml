@@ -2,7 +2,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
   name: istio-external-gateway
-  namespace: aks-istio-ingress
+  namespace: istio-system
 spec:
   selector:
     istio: aks-istio-ingressgateway-external
@@ -18,7 +18,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
   name: istio-internal-gateway
-  namespace: aks-istio-ingress
+  namespace: istio-system
 spec:
   selector:
     istio: aks-istio-ingressgateway-internal
