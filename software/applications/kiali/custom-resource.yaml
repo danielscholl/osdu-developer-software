@@ -18,7 +18,7 @@ spec:
       enabled: false
   external_services:
     istio:
-      root_namespace: istio-system
+      root_namespace: aks-istio-system
       config_map_name: istio-asm-1-19
       istio_sidecar_injector_config_map_name: istio-sidecar-injector-asm-1-19
       istiod_deployment_name: istiod-asm-1-19
