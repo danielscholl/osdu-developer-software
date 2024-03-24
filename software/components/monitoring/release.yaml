@@ -39,6 +39,13 @@ spec:
         - effect: NoSchedule
           key: app
           value: "cluster"
+      grafana.ini:
+        auth.anonymous:
+          enabled: true
+          org_name: Main Org.
+          org_role: Editor
+        auth:
+          disable_login_form: true
     prometheus:
       prometheusSpec:
         tolerations:
