@@ -18,7 +18,7 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: application-component-kiali
+  name: application-component-monitoring
   namespace: flux-system
 spec:
   interval: 1h
@@ -27,7 +27,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./software/applications/kiali
+  path: ./software/applications/monitoring
   prune: true
   wait: true
   healthChecks:
