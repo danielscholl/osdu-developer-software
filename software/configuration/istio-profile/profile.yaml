@@ -5,7 +5,7 @@ metadata:
   name: istio-profile
   namespace: istio-system
 spec:
-  profile: default
+  profile: minimal
   # hub: "docker.io/istio"
   # tag: "1.20.4"
   components:
@@ -16,6 +16,10 @@ spec:
     ingressGateways:
       - name: istio-ingressgateway
         enabled: true
+        label:
+        # Set a unique label for the gateway. This is required to ensure Gateways
+        # can select this workload
+        istio: ingressgateway
         k8s:
           serviceAnnotations:
             service.beta.kubernetes.io/azure-load-balancer-internal: "true"
@@ -31,11 +35,15 @@ spec:
                     - name: http
                       number: 80
                       protocol: HTTP
-                    - name: http2
-                      number: 443
-                      protocol: HTTPS
+                    # - name: http2
+                    #   number: 443
+                    #   protocol: HTTPS
       - name: istio-ingressgateway-external
         enabled: true
+        label:
+        # Set a unique label for the gateway. This is required to ensure Gateways
+        # can select this workload
+        istio: ingressgateway-external
         k8s:
           hpaSpec:
             minReplicas: 1
@@ -64,6 +72,10 @@ spec:
       excludeNamespaces:
         - istio-system
         - kube-system
+    gateways:
+      istio-ingressgateway:
+        # Enable gateway injection
+        injectionTemplate: gateway
     pilot:
       env:
         PILOT_ENABLE_STATUS: true
