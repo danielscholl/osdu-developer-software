@@ -28,6 +28,8 @@ kind: Gateway
 metadata:
   name: internal-gateway
   namespace: istio-system
+  annotations:
+    service.beta.kubernetes.io/azure-load-balancer-internal: "true"
 spec:
   selector:
     istio: ingressgateway
