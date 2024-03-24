@@ -13,15 +13,13 @@ spec:
         protocol: HTTP
       hosts:
         - "*"
-    - port:
-        number: 443
-        name: https
-        protocol: HTTPs
-      hosts:
-        - "*"
-      tls:
-        mode: SIMPLE
-        credentialName: istio-ingress-cert
+    # - port:
+    #     number: 443
+    #     name: https
+    #     protocol: HTTPS
+    #   tls:
+    #     mode: SIMPLE
+    #     credentialName: istio-ingress-cert
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
@@ -38,12 +36,12 @@ spec:
         protocol: HTTP
       hosts:
         - "*"
-    - port:
-        number: 443
-        name: https
-        protocol: HTTPs
-      hosts:
-        - "*"
-      tls:
-        mode: SIMPLE
-        credentialName: istio-ingress-cert
+    # - port:
+    #     number: 443
+    #     name: https
+    #     protocol: HTTPs
+    #   hosts:
+    #     - "*"
+    #   tls:
+    #     mode: SIMPLE
+    #     credentialName: istio-ingress-cert
