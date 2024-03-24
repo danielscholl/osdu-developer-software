@@ -191,23 +191,23 @@ spec:
       name: kiali-operator
       namespace: monitoring
 ---
-# apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-# kind: Kustomization
-# metadata:
-#   name: software-configuration-mesh-ingress
-#   namespace: flux-system
-# spec:
-#   dependsOn:
-#     - name: software-configuration-mesh
-#   interval: 1h
-#   retryInterval: 1m
-#   timeout: 5m
-#   sourceRef:
-#     kind: GitRepository
-#     name: flux-system
-#   path: ./software/configuration/istio-ingress
-#   prune: true
-#   wait: true
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: software-configuration-mesh-ingress
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: software-configuration-mesh
+  interval: 1h
+  retryInterval: 1m
+  timeout: 5m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./software/configuration/istio-ingress
+  prune: true
+  wait: true
   # healthChecks:
   #   - kind: Gateway
   #     name: external-gateway
