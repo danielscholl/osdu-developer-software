@@ -21,6 +21,12 @@ spec:
       config_map_name: istio-asm-1-19
       istio_sidecar_injector_config_map_name: istio-sidecar-injector-asm-1-19
       istiod_deployment_name: istiod-asm-1-19
+      components:
+        - app_label: istio-ingressgateway-internal
+          is_core: true
+          is_proxy: true
+          # default: namespace is undefined
+          namespace: aks-istio-ingress
     grafana:
       in_cluster_url: http://prometheus-operator-grafana.monitoring.svc:80
       url: http://prometheus-operator-grafana.monitoring.svc:80
