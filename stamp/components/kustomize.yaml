@@ -208,10 +208,10 @@ spec:
   path: ./software/configuration/istio-ingress
   prune: true
   wait: true
-  healthChecks:
-    - kind: Gateway
-      name: external-gateway
-      namespace: istio-system
-    - kind: Gateway
-      name: internal-gateway
-      namespace: istio-system
+  # healthChecks:
+  #   - kind: Gateway
+  #     name: external-gateway
+  #     namespace: istio-system
+  #   - kind: Gateway
+  #     name: internal-gateway
+  #     namespace: istio-system
