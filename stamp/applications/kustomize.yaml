@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: application-component-elastic-search
+  name: application-component-elastic
   namespace: flux-system
 spec:
   interval: 1h
@@ -82,7 +82,7 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: application-component-osdu-azure
+  name: application-component-osdu
   namespace: flux-system
 spec:
   interval: 1h
