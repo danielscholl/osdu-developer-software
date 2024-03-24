@@ -2,29 +2,6 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: application-component-podinfo
-  namespace: flux-system
-spec:
-  interval: 1h
-  retryInterval: 1m
-  timeout: 5m
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./software/applications/podinfo
-  prune: true
-  wait: true
-  healthChecks:
-    - kind: Deployment
-      name: podinfo
-      namespace: podinfo
-    - kind: Deployment
-      name: podinfo-redis
-      namespace: podinfo
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-kind: Kustomization
-metadata:
   name: application-component-elastic
   namespace: flux-system
 spec:
@@ -37,59 +14,82 @@ spec:
   path: ./software/applications/elastic-search
   prune: true
   wait: true
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-kind: Kustomization
-metadata:
-  name: application-component-kiali
-  namespace: flux-system
-spec:
-  interval: 1h
-  retryInterval: 1m
-  timeout: 5m
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./software/applications/kiali
-  prune: true
-  wait: true
-  healthChecks:
-    - kind: Deployment
-      name: kiali
-      namespace: monitoring
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-kind: Kustomization
-metadata:
-  name: application-component-devsample
-  namespace: flux-system
-spec:
-  interval: 1h
-  retryInterval: 1m
-  timeout: 5m
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./software/applications/dev-sample
-  prune: true
-  wait: true
-  healthChecks:
-    - kind: Deployment
-      name: env-debug
-      namespace: dev-sample
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-kind: Kustomization
-metadata:
-  name: application-component-osdu
-  namespace: flux-system
-spec:
-  interval: 1h
-  retryInterval: 1m
-  timeout: 5m
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./software/applications/osdu
-  prune: true
-  wait: true
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+# kind: Kustomization
+# metadata:
+#   name: application-component-podinfo
+#   namespace: flux-system
+# spec:
+#   interval: 1h
+#   retryInterval: 1m
+#   timeout: 5m
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./software/applications/podinfo
+#   prune: true
+#   wait: true
+#   healthChecks:
+#     - kind: Deployment
+#       name: podinfo
+#       namespace: podinfo
+#     - kind: Deployment
+#       name: podinfo-redis
+#       namespace: podinfo
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+# kind: Kustomization
+# metadata:
+#   name: application-component-kiali
+#   namespace: flux-system
+# spec:
+#   interval: 1h
+#   retryInterval: 1m
+#   timeout: 5m
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./software/applications/kiali
+#   prune: true
+#   wait: true
+#   healthChecks:
+#     - kind: Deployment
+#       name: kiali
+#       namespace: monitoring
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+# kind: Kustomization
+# metadata:
+#   name: application-component-devsample
+#   namespace: flux-system
+# spec:
+#   interval: 1h
+#   retryInterval: 1m
+#   timeout: 5m
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./software/applications/dev-sample
+#   prune: true
+#   wait: true
+#   healthChecks:
+#     - kind: Deployment
+#       name: env-debug
+#       namespace: dev-sample
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+# kind: Kustomization
+# metadata:
+#   name: application-component-osdu
+#   namespace: flux-system
+# spec:
+#   interval: 1h
+#   retryInterval: 1m
+#   timeout: 5m
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./software/applications/osdu
+#   prune: true
+#   wait: true
