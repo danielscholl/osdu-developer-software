@@ -27,7 +27,11 @@ spec:
         components:
         # - app_label: istiod
         #   is_core: true
-        - app_label: istio-ingressgateway
+        - app_label: aks-istio-ingressgateway-internal
+          is_core: true
+          is_proxy: true
+          namespace: aks-istio-ingress
+        - app_label: aks-istio-ingressgateway-external
           is_core: true
           is_proxy: true
           namespace: aks-istio-ingress
