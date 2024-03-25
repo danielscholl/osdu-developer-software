@@ -37,6 +37,8 @@ spec:
       in_cluster_url: http://prometheus-operator-grafana.monitoring.svc:80
       url: http://prometheus-operator-grafana.monitoring.svc:80
     prometheus:
+      in_cluster_url: http://prometheus-operated.monitoring.svc:9090
       url: http://prometheus-operated.monitoring.svc:9090
     tracing:
+      in_cluster_url: http://jaeger-query.monitoring.svc:16686
       url: http://jaeger-query.monitoring.svc:16686
