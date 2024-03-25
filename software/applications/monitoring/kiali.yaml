@@ -40,5 +40,5 @@ spec:
       in_cluster_url: http://prometheus-operated.monitoring.svc:9090
       url: http://prometheus-operated.monitoring.svc:9090
     tracing:
-      in_cluster_url: http://jaeger-query.monitoring.svc:16686
-      url: http://jaeger-query.monitoring.svc:16686
+      in_cluster_url: http://tracing-query.monitoring.svc:16686
+      url: http://tracing-query.monitoring.svc:16686
