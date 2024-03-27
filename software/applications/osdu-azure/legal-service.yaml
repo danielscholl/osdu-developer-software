@@ -51,7 +51,7 @@ spec:
     configuration:
     - service: legal
       # repository: community.opengroup.org:5555/osdu/platform/security-and-compliance/legal/legal-azure-m18-master
-      repository: community.opengroup.org:5555/osdu/platform/security-and-compliance/legal/legal-release-0-22:latest
+      repository: community.opengroup.org:5555/osdu/platform/security-and-compliance/legal/legal-release-0-22
       tag: latest
       path: /api/legal/v1/*
       probe:

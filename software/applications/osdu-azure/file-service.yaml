@@ -51,7 +51,7 @@ spec:
     configuration:
     - service: file
       # repository: community.opengroup.org:5555/osdu/platform/system/file/file-azure-m18-master
-      repository: community.opengroup.org:5555/osdu/platform/system/file/file-release-0-22:latest
+      repository: community.opengroup.org:5555/osdu/platform/system/file/file-release-0-22
       tag: latest
       path: /api/file/*
       probe:

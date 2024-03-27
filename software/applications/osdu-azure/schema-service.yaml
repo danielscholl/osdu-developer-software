@@ -51,7 +51,7 @@ spec:
     configuration:
     - service: schema
       # repository: community.opengroup.org:5555/osdu/platform/system/schema-service/schema-service-azure-m18-master
-      repository: community.opengroup.org:5555/osdu/platform/system/schema-service/schema-service-release-0-22:latest
+      repository: community.opengroup.org:5555/osdu/platform/system/schema-service/schema-service-release-0-22
       tag: latest
       path: /api/schema-service/v1/*
       probe:
