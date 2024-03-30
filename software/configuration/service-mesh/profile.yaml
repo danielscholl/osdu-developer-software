@@ -14,11 +14,30 @@ spec:
     pilot:
       enabled: true
     egressGateways:
-    - name: istio-egressgateway
-      enabled: false
+      - name: istio-egressgateway
+        enabled: false
     ingressGateways:
-    - name: istio-ingressgateway
-      enabled: true
+      - name: istio-ingressgateway
+        enabled: true
+        istio: ingressgateway
+        k8s:
+          serviceAnnotations:
+            service.beta.kubernetes.io/azure-load-balancer-internal: true
+          hpaSpec:
+            minReplicas: 1
+          overlays:
+            - apiVersion: v1
+              kind: Service
+              name: istio-ingressgateway
+              patches:
+                - path: spec.ports
+                  value:
+                    - name: http
+                      number: 80
+                      protocol: HTTP
+                    # - name: http2
+                    #   number: 443
+                    #   protocol: HTTPS
   values:
     defaultRevision: ""
     gateways:
