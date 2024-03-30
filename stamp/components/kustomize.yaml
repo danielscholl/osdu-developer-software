@@ -56,7 +56,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./software/components/elastic-operator
+  path: ./software/components/elastic
   prune: true
   wait: true
   healthChecks:
