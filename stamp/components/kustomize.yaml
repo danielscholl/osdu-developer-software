@@ -134,33 +134,33 @@ spec:
     - kind: Deployment
       name: istiod
       namespace: istio-system
-# ---
-# apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-# kind: Kustomization
-# metadata:
-#   name: software-configuration-mesh
-#   namespace: flux-system
-# spec:
-#   dependsOn:
-#     - name: software-component-mesh
-#   interval: 1h
-#   retryInterval: 1m
-#   timeout: 5m
-#   sourceRef:
-#     kind: GitRepository
-#     name: flux-system
-#   path: ./software/configuration/istio-profile
-#   prune: true
-#   healthChecks:
-#     - kind: Deployment
-#       name: istio-ingressgateway-external
-#       namespace: istio-system
-#     - kind: Deployment
-#       name: istio-ingressgateway
-#       namespace: istio-system
-#     - kind: DaemonSet
-#       name: istio-cni-node
-#       namespace: istio-system
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: software-configuration-mesh
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: software-component-mesh
+  interval: 1h
+  retryInterval: 1m
+  timeout: 5m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./software/configuration/istio-profile
+  prune: true
+  healthChecks:
+    - kind: Deployment
+      name: istio-ingressgateway-external
+      namespace: istio-system
+    - kind: Deployment
+      name: istio-ingressgateway
+      namespace: istio-system
+    - kind: DaemonSet
+      name: istio-cni-node
+      namespace: istio-system
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
@@ -215,28 +215,3 @@ spec:
     - kind: Gateway
       name: istio-internal-gateway
       namespace: aks-istio-ingress
-# ---
-# apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-# kind: Kustomization
-# metadata:
-#   name: software-configuration-mesh-ingress
-#   namespace: flux-system
-# spec:
-#   dependsOn:
-#     - name: software-configuration-mesh
-#   interval: 1h
-#   retryInterval: 1m
-#   timeout: 5m
-#   sourceRef:
-#     kind: GitRepository
-#     name: flux-system
-#   path: ./software/configuration/istio-ingress
-#   prune: true
-#   wait: true
-#   healthChecks:
-#     - kind: Gateway
-#       name: internal-gateway
-#       namespace: istio-system
-#     # - kind: Gateway
-#     #   name: external-gateway
-#     #   namespace: istio-system
