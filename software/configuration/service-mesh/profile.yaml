@@ -6,8 +6,6 @@ metadata:
   namespace: istio-system
 spec:
   profile: default
-  hub: docker.io/istio
-  tag: 1.21.0
   components:
     base:
       enabled: true
