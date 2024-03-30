@@ -1,31 +1,31 @@
-apiVersion: networking.istio.io/v1alpha3
-kind: Gateway
-metadata:
-  name: internal-gateway
-  namespace: istio-system
-spec:
-  selector:
-    istio: internal-gateway
-  servers:
-    - port:
-        number: 80
-        name: http
-        protocol: HTTP
-      hosts:
-        - "*"
----
-apiVersion: networking.istio.io/v1alpha3
-kind: Gateway
-metadata:
-  name: external-gateway
-  namespace: istio-system
-spec:
-  selector:
-    istio: external-gateway
-  servers:
-    - port:
-        number: 80
-        name: http
-        protocol: HTTP
-      hosts:
-        - "*"
+# apiVersion: networking.istio.io/v1alpha3
+# kind: Gateway
+# metadata:
+#   name: internal-gateway
+#   namespace: istio-system
+# spec:
+#   selector:
+#     istio: internal-gateway
+#   servers:
+#     - port:
+#         number: 80
+#         name: http
+#         protocol: HTTP
+#       hosts:
+#         - "*"
+# ---
+# apiVersion: networking.istio.io/v1alpha3
+# kind: Gateway
+# metadata:
+#   name: external-gateway
+#   namespace: istio-system
+# spec:
+#   selector:
+#     istio: external-gateway
+#   servers:
+#     - port:
+#         number: 80
+#         name: http
+#         protocol: HTTP
+#       hosts:
+#         - "*"
