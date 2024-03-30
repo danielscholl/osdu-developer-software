@@ -22,7 +22,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: istio-operator
-  namespace: istio-system
+  namespace: istio-operator
 spec:
   releaseName: istio-operator
   chart:
@@ -36,3 +36,20 @@ spec:
   install:
     remediation:
       retries: 3
+  values:
+    watchedNamespaces: istio-system
+    tolerations:
+      - effect: NoSchedule
+        key: app
+        value: "cluster"
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: agentpool
+                  operator: In
+                  values:
+                    - poolz1
+                    - poolz2
+                    - poolz3

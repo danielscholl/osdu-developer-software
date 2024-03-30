@@ -5,79 +5,25 @@ metadata:
   name: istio-profile
   namespace: istio-system
 spec:
-  profile: minimal
-  # hub: "docker.io/istio"
-  # tag: "1.20.4"
+  profile: default
+  hub: docker.io/istio
+  tag: 1.21.0
   components:
     base:
       enabled: true
-    cni:
+    pilot:
       enabled: true
-    ingressGateways:
-      - name: istio-ingressgateway
-        enabled: true
-        label:
-        # Set a unique label for the gateway. This is required to ensure Gateways
-        # can select this workload
-        istio: ingressgateway
-        k8s:
-          serviceAnnotations:
-            service.beta.kubernetes.io/azure-load-balancer-internal: "true"
-          hpaSpec:
-            minReplicas: 1
-          overlays:
-            - apiVersion: v1
-              kind: Service
-              name: istio-ingressgateway
-              patches:
-                - path: spec.ports
-                  value:
-                    - name: http
-                      number: 80
-                      protocol: HTTP
-                    # - name: http2
-                    #   number: 443
-                    #   protocol: HTTPS
-      - name: istio-ingressgateway-external
-        enabled: true
-        label:
-        # Set a unique label for the gateway. This is required to ensure Gateways
-        # can select this workload
-        istio: ingressgateway-external
-        k8s:
-          hpaSpec:
-            minReplicas: 1
     egressGateways:
-      - name: istio-egressgateway
-        enabled: false
-    pilot:
+    - name: istio-egressgateway
+      enabled: false
+    ingressGateways:
+    - name: istio-ingressgateway
       enabled: true
-      k8s:
-        hpaSpec:
-          minReplicas: 2
-  meshConfig:
-    accessLogFile: "/dev/stdout"
-    accessLogEncoding: "JSON"
   values:
-    global:
-      istiod:
-        enableAnalysis: true
-      proxy:
-        resources:
-          limits:
-            memory: 100Mi
-          requests:
-            memory: 100Mi
-    cni:
-      excludeNamespaces:
-        - istio-system
-        - kube-system
+    defaultRevision: ""
     gateways:
-      istio-ingressgateway:
-        # Enable gateway injection
-        injectionTemplate: gateway
-    pilot:
-      env:
-        PILOT_ENABLE_STATUS: true
-    sidecarInjectorWebhook:
-      rewriteAppHTTPProbe: true
+      istio-egressgateway: {}
+      istio-ingressgateway: {}
+    global:
+      configValidation: true
+      istioNamespace: istio-system
