@@ -38,20 +38,20 @@ spec:
                     # - name: http2
                     #   number: 443
                     #   protocol: HTTPS
-      - name: istio-ingressgateway-external
-        enabled: true
-        label:
-        # Set a unique label for the gateway. This is required to ensure Gateways
-        # can select this workload
-        istio: ingressgateway-external
-        k8s:
-          hpaSpec:
-            minReplicas: 1
-  values:
-    defaultRevision: ""
-    gateways:
-      istio-egressgateway: {}
-      istio-ingressgateway: {}
-    global:
-      configValidation: true
-      istioNamespace: istio-system
+  #     - name: istio-ingressgateway-external
+  #       enabled: true
+  #       label:
+  #       # Set a unique label for the gateway. This is required to ensure Gateways
+  #       # can select this workload
+  #       istio: ingressgateway-external
+  #       k8s:
+  #         hpaSpec:
+  #           minReplicas: 1
+  # values:
+  #   defaultRevision: ""
+  #   gateways:
+  #     istio-egressgateway: {}
+  #     istio-ingressgateway: {}
+  #   global:
+  #     configValidation: true
+  #     istioNamespace: istio-system
