@@ -172,7 +172,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: software-configuration-istio
+    - name: software-configuration-mesh
   interval: 1h
   retryInterval: 1m
   timeout: 5m
