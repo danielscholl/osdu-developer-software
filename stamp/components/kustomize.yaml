@@ -134,33 +134,58 @@ spec:
     - kind: Deployment
       name: istiod
       namespace: istio-system
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+# kind: Kustomization
+# metadata:
+#   name: software-configuration-mesh
+#   namespace: flux-system
+# spec:
+#   dependsOn:
+#     - name: software-component-mesh
+#   interval: 1h
+#   retryInterval: 1m
+#   timeout: 5m
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./software/configuration/service-mesh
+#   prune: true
+  # healthChecks:
+  #   - kind: Deployment
+  #     name: istio-ingressgateway-external
+  #     namespace: istio-system
+  #   - kind: Deployment
+  #     name: istio-ingressgateway
+  #     namespace: istio-system
+  #   - kind: DaemonSet
+  #     name: istio-cni-node
+  #     namespace: istio-system
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: software-configuration-mesh
+  name: software-component-mesh
   namespace: flux-system
 spec:
   dependsOn:
-    - name: software-component-mesh
+    - name: software-component-certificates
   interval: 1h
   retryInterval: 1m
   timeout: 5m
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./software/configuration/istio-profile
+  path: ./software/components/service-mesh
   prune: true
-  healthChecks:
-    - kind: Deployment
-      name: istio-ingressgateway-external
-      namespace: istio-system
-    - kind: Deployment
-      name: istio-ingressgateway
-      namespace: istio-system
-    - kind: DaemonSet
-      name: istio-cni-node
-      namespace: istio-system
+  wait: true
+  # healthChecks:
+  #   - kind: Gateway
+  #     name: istio-external-gateway
+  #     namespace: istio-system
+  #   - kind: Gateway
+  #     name: istio-internal-gateway
+  #     namespace: istio-system
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
@@ -168,6 +193,8 @@ metadata:
   name: software-component-monitoring
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: software-component-istio
   interval: 1h
   retryInterval: 1m
   timeout: 5m
@@ -190,28 +217,3 @@ spec:
     - kind: Deployment
       name: kiali-operator
       namespace: monitoring
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-kind: Kustomization
-metadata:
-  name: software-component-istio
-  namespace: flux-system
-spec:
-  dependsOn:
-    - name: software-component-certificates
-  interval: 1h
-  retryInterval: 1m
-  timeout: 5m
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./software/components/istio-ingress
-  prune: true
-  wait: true
-  healthChecks:
-    - kind: Gateway
-      name: istio-external-gateway
-      namespace: aks-istio-ingress
-    - kind: Gateway
-      name: istio-internal-gateway
-      namespace: aks-istio-ingress
