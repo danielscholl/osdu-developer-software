@@ -21,16 +21,16 @@ spec:
             service.beta.kubernetes.io/azure-load-balancer-internal: "true"
           hpaSpec:
             minReplicas: 1
-          overlays:
-            - apiVersion: v1
-              kind: Service
-              name: istio-ingressgateway-internal
-              patches:
-                - path: spec.ports
-                  value:
-                    - name: http
-                      number: 80
-                      protocol: HTTP
+          # overlays:
+          #   - apiVersion: v1
+          #     kind: Service
+          #     name: istio-ingressgateway-internal
+          #     patches:
+          #       - path: spec.ports
+          #         value:
+          #           - name: http
+          #             number: 80
+          #             protocol: HTTP
       - name: istio-ingressgateway-external
         enabled: true
         k8s:
