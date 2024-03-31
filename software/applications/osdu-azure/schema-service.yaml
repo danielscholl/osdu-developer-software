@@ -7,8 +7,8 @@ spec:
   hosts:
     - "*"
   gateways:
-    - istio-system/internal-gateway
-    - istio-system/external-gateway
+    - istio-system/istio-ingressgateway-internal
+    - istio-system/istio-ingressgateway-internal
   http:
     - match:
         - uri:

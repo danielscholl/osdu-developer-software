@@ -21,7 +21,7 @@ metadata:
   namespace: istio-system
 spec:
   selector:
-    istio: stio-ingressgateway-external
+    istio: istio-ingressgateway-external
   servers:
     - port:
         number: 80
