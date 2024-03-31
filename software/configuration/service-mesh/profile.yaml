@@ -14,8 +14,6 @@ spec:
     ingressGateways:
       - name: istio-ingressgateway
         enabled: true
-        # label:
-        #   istio: ingressgateway-internal
         k8s:
           serviceAnnotations:
             service.beta.kubernetes.io/azure-load-balancer-internal: "true"
@@ -33,8 +31,6 @@ spec:
           #             protocol: HTTP
       - name: istio-ingressgateway-external
         enabled: true
-        # label:
-        #   istio: ingressgateway-external
         k8s:
           hpaSpec:
             minReplicas: 1
