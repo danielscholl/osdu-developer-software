@@ -19,7 +19,7 @@ spec:
       value:
         name: envoy.lua.remove-user-appid-header
         typed_config:
-          "@type": "type.googleapis.com/envoy.config.filter.http.lua.v3.Lua"
+          "@type": "type.googleapis.com/envoy.extensions.filters.http.lua.v3.Lua"
           inlineCode: |
             function envoy_on_request(request_handle)
               request_handle:headers():remove("x-user-id")
@@ -47,7 +47,7 @@ spec:
         value:
           name: envoy.lua.user-from-msft-aad-token
           typed_config:
-            "@type": "type.googleapis.com/envoy.config.filter.http.lua.v3.Lua"
+            "@type": "type.googleapis.com/envoy.extensions.filters.http.lua.v3.Lua"
             inlineCode: |
               msft_issuer = "https://sts.windows.net/{{ $tenant }}/"
               function envoy_on_request(request_handle)
@@ -90,7 +90,7 @@ spec:
         value:
           name: envoy.lua.user-from-msftonline-token
           typed_config:
-            "@type": "type.googleapis.com/envoy.config.filter.http.lua.v3.Lua"
+            "@type": "type.googleapis.com/envoy.extensions.filters.http.lua.v3.Lua"
             inlineCode: |
               msft_issuer = "https://login.microsoftonline.com/{{ $tenant }}/v2.0"
               function envoy_on_request(request_handle)
@@ -129,7 +129,7 @@ spec:
         value:
           name: envoy.lua.user-from-msft-aad-token
           typed_config:
-            "@type": "type.googleapis.com/envoy.config.filter.http.lua.v3.Lua"
+            "@type": "type.googleapis.com/envoy.extensions.filters.http.lua.v3.Lua"
             inlineCode: |
               msft_issuer = "https://sts.windows.net/{{ $tenant }}/"
               function envoy_on_request(request_handle)
@@ -168,7 +168,7 @@ spec:
         value:
           name: envoy.lua.user-from-msftonline-token
           typed_config:
-            "@type": "type.googleapis.com/envoy.config.filter.http.lua.v3.Lua"
+            "@type": "type.googleapis.com/envoy.extensions.filters.http.lua.v3.Lua"
             inlineCode: |
               msft_issuer = "https://login.microsoftonline.com/{{ $tenant }}/v2.0"
               function envoy_on_request(request_handle)
