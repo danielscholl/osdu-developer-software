@@ -4,5 +4,6 @@ kind: Namespace
 metadata:
   name: osdu-azure
   labels:
+    toolkit.fluxcd.io/tenant: dev-team
     istio-injection: enabled
   
