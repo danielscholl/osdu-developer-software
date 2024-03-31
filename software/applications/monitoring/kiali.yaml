@@ -4,7 +4,7 @@ metadata:
   name: kiali
   namespace: monitoring
 spec:
-  istio_namespace: aks-istio-system
+  istio_namespace: istio-system
   auth:
     strategy: anonymous
   deployment:
