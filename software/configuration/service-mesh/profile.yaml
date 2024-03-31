@@ -24,7 +24,7 @@ spec:
           overlays:
             - apiVersion: v1
               kind: Service
-              name: istio-ingressgateway
+              name: istio-ingressgateway-internal
               patches:
                 - path: spec.ports
                   value:
@@ -39,7 +39,7 @@ spec:
           overlays:
             - apiVersion: v1
               kind: Service
-              name: istio-ingressgateway
+              name: istio-ingressgateway-external
               patches:
                 - path: spec.ports
                   value:
