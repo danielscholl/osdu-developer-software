@@ -3,8 +3,6 @@ kind: Gateway
 metadata:
   name: internal-gateway
   namespace: istio-system
-  label:
-    app: internal-gateway
 spec:
   selector:
     istio: istio-ingressgateway-internal
@@ -21,8 +19,6 @@ kind: Gateway
 metadata:
   name: external-gateway
   namespace: istio-system
-  label:
-    app: external-gateway
 spec:
   selector:
     istio: istio-ingressgateway-external

@@ -27,7 +27,7 @@ spec:
       component_status:
         enabled: true
         components:
-        - app_label: ingressgateway-internal
+        - app_label: istio-ingressgateway
           is_core: true
           is_proxy: true
           namespace: istio-system
