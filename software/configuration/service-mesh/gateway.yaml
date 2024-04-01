@@ -7,12 +7,12 @@ spec:
   selector:
     istio: istio-ingressgateway-internal
   servers:
-  - port:
-    name: http
-    number: 80
-    protocol: HTTP
-    hosts:
-    - "*"    
+    - port:
+        name: http
+        number: 80
+        protocol: HTTP
+        hosts:
+          - "*"    
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
@@ -23,12 +23,12 @@ spec:
   selector:
     istio: istio-ingressgateway-external
   servers:
-  - port:
-    name: http
-    number: 80
-    protocol: HTTP
-    hosts:
-    - "*"
+    - port:
+        name: http
+        number: 80
+        protocol: HTTP
+        hosts:
+          - "*"
   # - port:
   #   number: 443
   #   name: https
