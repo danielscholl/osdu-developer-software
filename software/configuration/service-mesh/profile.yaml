@@ -12,14 +12,11 @@ spec:
     cni:
       enabled: false
     ingressGateways:
-      ingressGateways:
       - name: istio-ingressgateway
         enabled: false
         k8s:
           serviceAnnotations:
             service.beta.kubernetes.io/azure-load-balancer-internal: "true"
-      - name: istio-ingressgateway
-        enabled: false
       - name: istio-ingressgateway-internal
         enabled: true
         label:

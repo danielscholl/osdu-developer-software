@@ -8,8 +8,8 @@ spec:
     istio: istio-ingressgateway-internal
   servers:
   - port:
-    number: 80
     name: http
+    number: 80
     protocol: HTTP
     hosts:
     - "*"    
@@ -24,8 +24,8 @@ spec:
     istio: istio-ingressgateway-external
   servers:
   - port:
-    number: 80
     name: http
+    number: 80
     protocol: HTTP
     hosts:
     - "*"
