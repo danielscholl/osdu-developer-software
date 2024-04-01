@@ -21,7 +21,7 @@ spec:
         namespace: istio-system
         label:
           istio: istio-ingressgateway-internal
-          version: 1.0
+          version: "1.0"
           app: istio-ingressgateway-internal
         k8s:
           serviceAnnotations:
@@ -33,7 +33,7 @@ spec:
         namespace: istio-system
         label:
           istio: istio-ingressgateway-external
-          version: 1.0
+          version: "1.0"
           app: istio-ingressgateway-external
         k8s:
           hpaSpec:
