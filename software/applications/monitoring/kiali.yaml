@@ -21,9 +21,9 @@ spec:
   external_services:
     istio:
       root_namespace: istio-system
-      config_map_name: istio
-      istio_sidecar_injector_config_map_name: istio-sidecar-injector
-      istiod_deployment_name: istiod
+      # config_map_name: istio
+      # istio_sidecar_injector_config_map_name: istio-sidecar-injector
+      # istiod_deployment_name: istiod
       component_status:
         enabled: true
         components:
