@@ -26,3 +26,8 @@ spec:
     ingress:
       enabled: true
       className: nginx
+      additionalLabels: {
+        app: podinfo
+      }
+    serviceMonitor:
+      enabled: true
