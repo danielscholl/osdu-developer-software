@@ -13,19 +13,19 @@ spec:
       enabled: false
     ingressGateways:
       - name: istio-ingressgateway
-        enabled: false
-        k8s:
-          serviceAnnotations:
-            service.beta.kubernetes.io/azure-load-balancer-internal: "true"
-      - name: istio-ingressgateway-internal
         enabled: true
-        label:
-          istio: istio-ingressgateway-internal
         k8s:
           serviceAnnotations:
             service.beta.kubernetes.io/azure-load-balancer-internal: "true"
-          hpaSpec:
-            minReplicas: 1
+      # - name: istio-ingressgateway-internal
+      #   enabled: true
+      #   label:
+      #     istio: istio-ingressgateway-internal
+      #   k8s:
+      #     serviceAnnotations:
+      #       service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+      #     hpaSpec:
+      #       minReplicas: 1
       - name: istio-ingressgateway-external
         enabled: true
         label:
