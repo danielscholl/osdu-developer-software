@@ -17,7 +17,6 @@ spec:
       - name: istio-ingressgateway-internal
         enabled: true
         label:
-          app: ingressgateway-internal
           istio: istio-ingressgateway-internal
         k8s:
           serviceAnnotations:
@@ -27,7 +26,6 @@ spec:
       - name: istio-ingressgateway-external
         enabled: true
         label:
-          app: ingressgateway-external
           istio: istio-ingressgateway-external
         k8s:
           hpaSpec:
