@@ -4,6 +4,8 @@ metadata:
   name: internal-gateway
   namespace: istio-system
 spec:
+  label:
+    app: internal-gateway
   selector:
     istio: istio-ingressgateway-internal
   servers:
@@ -20,6 +22,8 @@ metadata:
   name: external-gateway
   namespace: istio-system
 spec:
+  label:
+    app: external-gateway
   selector:
     istio: istio-ingressgateway-external
   servers:
