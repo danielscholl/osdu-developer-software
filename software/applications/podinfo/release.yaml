@@ -19,6 +19,9 @@ spec:
   # Default values
   # https://github.com/stefanprodan/podinfo/blob/master/charts/podinfo/values.yaml
   values:
+    labels: {
+      app: podinfo
+    }
     redis:
       enabled: true
       repository: public.ecr.aws/docker/library/redis
@@ -26,8 +29,5 @@ spec:
     ingress:
       enabled: true
       className: nginx
-      additionalLabels: {
-        app: podinfo
-      }
     serviceMonitor:
       enabled: true
