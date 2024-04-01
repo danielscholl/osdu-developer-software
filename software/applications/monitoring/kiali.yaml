@@ -27,11 +27,11 @@ spec:
       component_status:
         enabled: true
         components:
-        - app_label: istio-ingressgateway-internal
+        - app_label: ingressgateway-internal
           is_core: true
           is_proxy: true
           namespace: istio-system
-        - app_label: istio-ingressgateway-external
+        - app_label: ingressgateway-external
           is_core: true
           is_proxy: true
           namespace: istio-system

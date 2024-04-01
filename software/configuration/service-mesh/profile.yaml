@@ -16,6 +16,8 @@ spec:
         enabled: false
       - name: istio-ingressgateway-internal
         enabled: true
+        label:
+          app: ingressgateway-internal
         k8s:
           serviceAnnotations:
             service.beta.kubernetes.io/azure-load-balancer-internal: "true"
@@ -23,6 +25,8 @@ spec:
             minReplicas: 1
       - name: istio-ingressgateway-external
         enabled: true
+        label:
+          app: ingressgateway-external
         k8s:
           hpaSpec:
             minReplicas: 1
