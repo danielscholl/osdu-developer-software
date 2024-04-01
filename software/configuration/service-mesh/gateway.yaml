@@ -5,7 +5,7 @@ metadata:
   namespace: istio-system
 spec:
   selector:
-    istio: istio-ingressgateway-internal
+    istio: internal-gateway
   servers:
   - hosts:
     - "*"
@@ -21,7 +21,7 @@ metadata:
   namespace: istio-system
 spec:
   selector:
-    istio: istio-ingressgateway-external
+    istio: external-gateway
   servers:
   - hosts:
     - "*"
