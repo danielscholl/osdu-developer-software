@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: software-configuration-maps
+  name: software-component-maps
   namespace: flux-system
 spec:
   interval: 1h
@@ -11,14 +11,14 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./software/configuration/config-maps
+  path: ./software/components/config-maps
   prune: true
   wait: true
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: software-component-redis
+  name: software-component-cache
   namespace: flux-system
 spec:
   interval: 1h
@@ -27,7 +27,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./software/components/redis-cache
+  path: ./software/components/redis-cluster
   prune: true
   wait: true
   healthChecks:
@@ -61,7 +61,7 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: configuration-component-elastic
+  name: software-component-elastic-configuration
   namespace: flux-system
 spec:
   dependsOn:
@@ -142,12 +142,12 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: configuration-component-certificates
+  name: software-component-certificates-configuration
   namespace: flux-system
 spec:
   dependsOn:
-    - name: software-component-certificates
     - name: software-component-mesh
+    - name: software-component-certificates
   interval: 1h
   retryInterval: 1m
   timeout: 5m
@@ -165,11 +165,11 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: configuration-component-mesh
+  name: software-component-mesh-configuration
   namespace: flux-system
 spec:
   dependsOn:
-    - name: software-component-certificates
+    - name: software-component-certificates-configuration
   interval: 1h
   retryInterval: 1m
   timeout: 5m
@@ -196,7 +196,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: configuration-component-mesh
+    - name: software-component-mesh-configuration
   interval: 1h
   retryInterval: 1m
   timeout: 5m
