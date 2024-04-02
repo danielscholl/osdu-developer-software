@@ -7,7 +7,7 @@ metadata:
 spec:
   profile: default
   hub: docker.io/istio
-  tag: 1.19.0
+  tag: 1.21.0
   meshConfig:
     trustDomain: cluster.local
   values:
@@ -48,12 +48,12 @@ spec:
     egressGateways:
       - name: istio-egressgateway
         enabled: false
-    addonComponents:
-      kiali:
-        enabled: true
-      grafana:
-        enabled: false
-      prometheus:
-        enabled: true
-      tracing:
-        enabled: false
+  addonComponents:
+    kiali:
+      enabled: true
+    grafana:
+      enabled: false
+    prometheus:
+      enabled: true
+    tracing:
+      enabled: false
