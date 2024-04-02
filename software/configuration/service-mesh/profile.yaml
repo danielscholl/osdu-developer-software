@@ -48,12 +48,3 @@ spec:
     egressGateways:
       - name: istio-egressgateway
         enabled: false
-  addonComponents:
-    kiali:
-      enabled: true
-    grafana:
-      enabled: false
-    prometheus:
-      enabled: true
-    tracing:
-      enabled: false
