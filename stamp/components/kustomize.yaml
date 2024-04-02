@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: software-component-config-maps
+  name: software-component-airflow
   namespace: flux-system
 spec:
   interval: 1h
@@ -11,7 +11,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./software/components/config-maps
+  path: ./software/components/airflow
   prune: true
   wait: true
 ---
@@ -37,6 +37,22 @@ spec:
     - kind: StatefulSet
       name: redis-replicas
       namespace: redis-cluster
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: software-component-config-maps
+  namespace: flux-system
+spec:
+  interval: 1h
+  retryInterval: 1m
+  timeout: 5m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./software/components/config-maps
+  prune: true
+  wait: true
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
@@ -78,22 +94,6 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: software-component-airflow
-  namespace: flux-system
-spec:
-  interval: 1h
-  retryInterval: 1m
-  timeout: 5m
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./software/components/airflow
-  prune: true
-  wait: true
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-kind: Kustomization
-metadata:
   name: software-component-mesh
   namespace: flux-system
 spec:
@@ -114,7 +114,7 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: software-component-certificates
+  name: software-component-mesh-certs
   namespace: flux-system
 spec:
   dependsOn:
@@ -142,12 +142,12 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: software-component-certificates-configuration
+  name: software-component-mesh-certs-configuration
   namespace: flux-system
 spec:
   dependsOn:
     - name: software-component-mesh
-    - name: software-component-certificates
+    - name: software-component-mesh-certs
   interval: 1h
   retryInterval: 1m
   timeout: 5m
@@ -165,11 +165,13 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: software-component-mesh-configuration
+  name: software-component-mesh-controlplane-configuration
   namespace: flux-system
 spec:
   dependsOn:
-    - name: software-component-certificates-configuration
+    - name: software-component-mesh
+    - name: software-component-mesh-certs
+    - name: software-component-mesh-certs-configuration
   interval: 1h
   retryInterval: 1m
   timeout: 5m
@@ -196,7 +198,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: software-component-mesh-configuration
+    - name: software-component-mesh-controlplane-configuration
   interval: 1h
   retryInterval: 1m
   timeout: 5m
