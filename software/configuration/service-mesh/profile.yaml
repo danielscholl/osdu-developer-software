@@ -5,7 +5,7 @@ metadata:
   name: istio-profile
   namespace: istio-system
 spec:
-  profile: default
+  profile: minimal
   hub: docker.io/istio
   tag: 1.21.0
   meshConfig:
@@ -16,13 +16,18 @@ spec:
   values:
     global:
       caAddress: cert-manager-istio-csr.cert-manager.svc:443
+    sidecarInjectorWebhook:
+      templates:
+        custom: |
+          spec:
+            containers:
+            - name: istio-proxy
+              env:
+              - name: InboundTrafficPolicyMode
+                value: localhost
   components:
     pilot:
       enabled: true
-      # ingress:
-      #   ingressService: istio-ingressgateway
-      #   ingressControllerMode: STRICT
-      #   ingressClass: external-istio
     cni:
       enabled: false
     ingressGateways:
