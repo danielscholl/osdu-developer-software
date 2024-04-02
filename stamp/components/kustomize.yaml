@@ -214,36 +214,36 @@ spec:
     #   name: istio-ingressgateway-external
     #   namespace: istio-system
 ---
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-kind: Kustomization
-metadata:
-  name: software-component-mesh-monitoring
-  namespace: flux-system
-spec:
-  dependsOn:
-    - name: software-component-mesh
-    - name: software-component-mesh-certs
-    - name: software-component-mesh-certs-config
-    - name: software-component-mesh-cp-config
-  interval: 1h
-  retryInterval: 1m
-  timeout: 5m
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./software/components/monitoring
-  prune: true
-  wait: true
-  healthChecks:
-    - kind: Deployment
-      name: prometheus-operator-grafana
-      namespace: monitoring
-    - kind: Deployment
-      name: prometheus-operator-kube-p-operator
-      namespace: monitoring
-    - kind: Deployment
-      name: prometheus-operator-kube-p-operator
-      namespace: monitoring
-    - kind: Deployment
-      name: kiali-operator
-      namespace: monitoring
+# apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+# kind: Kustomization
+# metadata:
+#   name: software-component-mesh-monitoring
+#   namespace: flux-system
+# spec:
+#   dependsOn:
+#     - name: software-component-mesh
+#     - name: software-component-mesh-certs
+#     - name: software-component-mesh-certs-config
+#     - name: software-component-mesh-cp-config
+#   interval: 1h
+#   retryInterval: 1m
+#   timeout: 5m
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./software/components/monitoring
+#   prune: true
+#   wait: true
+#   healthChecks:
+#     - kind: Deployment
+#       name: prometheus-operator-grafana
+#       namespace: monitoring
+#     - kind: Deployment
+#       name: prometheus-operator-kube-p-operator
+#       namespace: monitoring
+#     - kind: Deployment
+#       name: prometheus-operator-kube-p-operator
+#       namespace: monitoring
+#     - kind: Deployment
+#       name: kiali-operator
+#       namespace: monitoring
