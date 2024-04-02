@@ -8,14 +8,18 @@ spec:
   profile: default
   hub: docker.io/istio
   tag: 1.19.0
-  # meshConfig:
-  #   trustDomain: cluster.local
-  # values:
-  #   global:
-  #     caAddress: cert-manager-istio-csr.cert-manager.svc:443
+  meshConfig:
+    trustDomain: cluster.local
+  values:
+    global:
+      caAddress: cert-manager-istio-csr.cert-manager.svc:443
   components:
     pilot:
       enabled: true
+      # ingress:
+      #   ingressService: istio-ingressgateway
+      #   ingressControllerMode: STRICT
+      #   ingressClass: external-istio
     cni:
       enabled: false
     ingressGateways:
@@ -24,6 +28,15 @@ spec:
         k8s:
           serviceAnnotations:
             service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+          service:
+            ports:
+              - port: 15020
+                name: status-port
+              - port: 80
+                name: http2
+              - port: 443
+                name: https
+          replicaCount: 2
       # - name: istio-ingressgateway-external
       #   enabled: true
       #   namespace: istio-system
@@ -34,4 +47,13 @@ spec:
       #       minReplicas: 1
     egressGateways:
       - name: istio-egressgateway
+        enabled: false
+    addonComponents:
+      kiali:
+        enabled: true
+      grafana:
+        enabled: false
+      prometheus:
+        enabled: true
+      tracing:
         enabled: false
