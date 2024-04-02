@@ -35,15 +35,15 @@ spec:
       #       service.beta.kubernetes.io/azure-load-balancer-internal: "true"
       #     hpaSpec:
       #       minReplicas: 1
-      # - name: istio-ingressgateway-external
-      #   enabled: true
-      #   namespace: istio-system
-      #   label:
-      #     istio: istio-ingressgateway-external
-      #     service.istio.io/canonical-revision: "1.21.0"
-      #   k8s:
-      #     hpaSpec:
-      #       minReplicas: 1
+      - name: istio-ingressgateway-external
+        enabled: true
+        namespace: istio-system
+        label:
+          istio: istio-ingressgateway-external
+          service.istio.io/canonical-revision: "1.21.0"
+        k8s:
+          hpaSpec:
+            minReplicas: 1
     egressGateways:
       - name: istio-egressgateway
         enabled: false
