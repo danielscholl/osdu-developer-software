@@ -22,7 +22,7 @@ spec:
         label:
           istio: istio-ingressgateway-internal
           # version: "1.0"
-          # app: istio-ingressgateway-internal
+          app: istio-ingressgateway-internal
         k8s:
           serviceAnnotations:
             service.beta.kubernetes.io/azure-load-balancer-internal: "true"
@@ -34,7 +34,7 @@ spec:
         label:
           istio: istio-ingressgateway-external
           # version: "1.0"
-          # app: istio-ingressgateway-external
+          app: istio-ingressgateway-external
         k8s:
           hpaSpec:
             minReplicas: 1
