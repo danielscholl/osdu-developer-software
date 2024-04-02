@@ -7,7 +7,7 @@ metadata:
 spec:
   profile: default
   hub: docker.io/istio
-  tag: 1.21.0
+  tag: 1.19.0
   # meshConfig:
   #   trustDomain: cluster.local
   # values:
