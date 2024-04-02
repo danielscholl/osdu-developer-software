@@ -1,12 +1,3 @@
-# ---
-# apiVersion: cert-manager.io/v1
-# kind: Issuer
-# metadata:
-#   name: selfsigned-issuer
-#   namespace: istio-system
-# spec:
-#   selfSigned: {}
-
 ---
 # SelfSigned issuers are useful for creating root certificates
 apiVersion: cert-manager.io/v1
