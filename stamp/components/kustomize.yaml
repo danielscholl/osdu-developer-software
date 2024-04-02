@@ -109,6 +109,7 @@ spec:
   path: ./software/configuration/elastic
   prune: true
 
+
 ######################
 ## Mesh Component
 ######################
