@@ -1,3 +1,6 @@
+######################
+## Airflow Component
+######################
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
@@ -14,6 +17,11 @@ spec:
   path: ./software/components/airflow
   prune: true
   wait: true
+
+
+######################
+## Cache Component
+######################
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
@@ -37,6 +45,11 @@ spec:
     - kind: StatefulSet
       name: redis-replicas
       namespace: redis-cluster
+
+
+######################
+## Config Component
+######################
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
@@ -53,6 +66,11 @@ spec:
   path: ./software/components/config-maps
   prune: true
   wait: true
+
+
+######################
+## Elastic Component
+######################
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
@@ -90,137 +108,141 @@ spec:
     name: flux-system
   path: ./software/configuration/elastic
   prune: true
-# ---
-# apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-# kind: Kustomization
-# metadata:
-#   name: software-component-mesh
-#   namespace: flux-system
-# spec:
-#   interval: 1h
-#   retryInterval: 1m
-#   timeout: 5m
-#   sourceRef:
-#     kind: GitRepository
-#     name: flux-system
-#   path: ./software/components/service-mesh
-#   prune: true
-#   wait: true
-#   healthChecks:
-#     - kind: Deployment
-#       name: istio-operator
-#       namespace: istio-operator
-# ---
-# apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-# kind: Kustomization
-# metadata:
-#   name: software-component-mesh-certs
-#   namespace: flux-system
-# spec:
-#   dependsOn:
-#     - name: software-component-mesh
-#   interval: 1h
-#   retryInterval: 1m
-#   timeout: 5m
-#   sourceRef:
-#     kind: GitRepository
-#     name: flux-system
-#   path: ./software/components/cert-manager
-#   prune: true
-#   wait: true
-#   healthChecks:
-#     - kind: Deployment
-#       name: cert-manager
-#       namespace: cert-manager
-#     - kind: Deployment
-#       name: cert-manager-cainjector
-#       namespace: cert-manager
-#     - kind: Deployment
-#       name: cert-manager-webhook
-#       namespace: cert-manager
-# ---
-# apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-# kind: Kustomization
-# metadata:
-#   name: software-component-mesh-certs-config
-#   namespace: flux-system
-# spec:
-#   dependsOn:
-#     - name: software-component-mesh
-#     - name: software-component-mesh-certs
-#   interval: 1h
-#   retryInterval: 1m
-#   timeout: 5m
-#   sourceRef:
-#     kind: GitRepository
-#     name: flux-system
-#   path: ./software/configuration/cert-manager
-#   prune: true
-#   wait: true
-#   healthChecks:
-#     - kind: Deployment
-#       name: cert-manager-istio-csr
-#       namespace: cert-manager
-# ---
-# apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-# kind: Kustomization
-# metadata:
-#   name: software-component-mesh-cp-config
-#   namespace: flux-system
-# spec:
-#   dependsOn:
-#     - name: software-component-mesh
-#     - name: software-component-mesh-certs
-#     - name: software-component-mesh-certs-config
-#   interval: 1h
-#   retryInterval: 1m
-#   timeout: 5m
-#   sourceRef:
-#     kind: GitRepository
-#     name: flux-system
-#   path: ./software/configuration/service-mesh
-#   prune: true
-#   healthChecks:
-#     - kind: Deployment
-#       name: istiod
-#       namespace: istio-system
-#     - kind: Deployment
-#       name: istio-ingressgateway
-#       namespace: istio-system
-#     - kind: Deployment
-#       name: istio-ingressgateway-external
-#       namespace: istio-system
-# ---
-# apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-# kind: Kustomization
-# metadata:
-#   name: software-component-mesh-monitoring
-#   namespace: flux-system
-# spec:
-#   dependsOn:
-#     - name: software-component-mesh
-#     - name: software-component-mesh-certs
-#     - name: software-component-mesh-certs-config
-#     - name: software-component-mesh-cp-config
-#   interval: 1h
-#   retryInterval: 1m
-#   timeout: 5m
-#   sourceRef:
-#     kind: GitRepository
-#     name: flux-system
-#   path: ./software/components/monitoring
-#   prune: true
-#   wait: true
-#   healthChecks:
-#     - kind: Deployment
-#       name: prometheus-operator-grafana
-#       namespace: monitoring
-#     - kind: Deployment
-#       name: prometheus-operator-kube-p-operator
-#       namespace: monitoring
-#     - kind: Deployment
-#       name: prometheus-operator-kube-p-operator
-#       namespace: monitoring
-#     - kind: Deployment
-#       name: kiali-operator
-#       namespace: monitoring
+
+######################
+## Mesh Component
+######################
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: software-component-mesh
+  namespace: flux-system
+spec:
+  interval: 1h
+  retryInterval: 1m
+  timeout: 5m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./software/components/service-mesh
+  prune: true
+  wait: true
+  healthChecks:
+    - kind: Deployment
+      name: istio-operator
+      namespace: istio-operator
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: software-component-mesh-certs
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: software-component-mesh
+  interval: 1h
+  retryInterval: 1m
+  timeout: 5m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./software/components/cert-manager
+  prune: true
+  wait: true
+  healthChecks:
+    - kind: Deployment
+      name: cert-manager
+      namespace: cert-manager
+    - kind: Deployment
+      name: cert-manager-cainjector
+      namespace: cert-manager
+    - kind: Deployment
+      name: cert-manager-webhook
+      namespace: cert-manager
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: software-component-mesh-certs-config
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: software-component-mesh
+    - name: software-component-mesh-certs
+  interval: 1h
+  retryInterval: 1m
+  timeout: 5m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./software/configuration/cert-manager
+  prune: true
+  wait: true
+  healthChecks:
+    - kind: Deployment
+      name: cert-manager-istio-csr
+      namespace: cert-manager
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: software-component-mesh-cp-config
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: software-component-mesh
+    - name: software-component-mesh-certs
+    - name: software-component-mesh-certs-config
+  interval: 1h
+  retryInterval: 1m
+  timeout: 5m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./software/configuration/service-mesh
+  prune: true
+  healthChecks:
+    - kind: Deployment
+      name: istiod
+      namespace: istio-system
+    - kind: Deployment
+      name: istio-ingressgateway
+      namespace: istio-system
+    - kind: Deployment
+      name: istio-ingressgateway-external
+      namespace: istio-system
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: software-component-mesh-monitoring
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: software-component-mesh
+    - name: software-component-mesh-certs
+    - name: software-component-mesh-certs-config
+    - name: software-component-mesh-cp-config
+  interval: 1h
+  retryInterval: 1m
+  timeout: 5m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./software/components/monitoring
+  prune: true
+  wait: true
+  healthChecks:
+    - kind: Deployment
+      name: prometheus-operator-grafana
+      namespace: monitoring
+    - kind: Deployment
+      name: prometheus-operator-kube-p-operator
+      namespace: monitoring
+    - kind: Deployment
+      name: prometheus-operator-kube-p-operator
+      namespace: monitoring
+    - kind: Deployment
+      name: kiali-operator
+      namespace: monitoring
