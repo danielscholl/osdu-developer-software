@@ -44,3 +44,24 @@ metadata:
 spec:
   ca:
     secretName: istio-ca
+---
+# Create a Gateway Certificate for the istio-ingressgateway.
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: istio-ingressgateway-certs
+  namespace: istio-system
+spec:
+  duration: 2160h # 90 days
+  isCA: false
+  secretName: wild-card-tls
+  commonName: "*.osdu-developer.com"
+  usages:
+    - server auth
+    - client auth
+  dnsNames:
+  - "*.osdu-developer.com"
+  issuerRef:
+    name: istio-ca
+    kind: Issuer
+    group: cert-manager.io
