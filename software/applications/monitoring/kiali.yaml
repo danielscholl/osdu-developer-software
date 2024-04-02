@@ -31,10 +31,6 @@ spec:
           is_core: true
           is_proxy: true
           namespace: istio-system
-        - app_label: ingressgateway-external
-          is_core: true
-          is_proxy: true
-          namespace: istio-system
     grafana:
       in_cluster_url: http://prometheus-operator-grafana.monitoring.svc:80
       url: http://prometheus-operator-grafana.monitoring.svc:80
