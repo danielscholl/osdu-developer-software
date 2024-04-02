@@ -77,7 +77,7 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: software-component-elastic-configuration
+  name: software-component-elastic-config
   namespace: flux-system
 spec:
   dependsOn:
@@ -142,7 +142,7 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: software-component-mesh-certs-configuration
+  name: software-component-mesh-certs-config
   namespace: flux-system
 spec:
   dependsOn:
@@ -165,13 +165,13 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: software-component-mesh-controlplane-configuration
+  name: software-component-mesh-controlplane-config
   namespace: flux-system
 spec:
   dependsOn:
     - name: software-component-mesh
     - name: software-component-mesh-certs
-    - name: software-component-mesh-certs-configuration
+    - name: software-component-mesh-certs-config
   interval: 1h
   retryInterval: 1m
   timeout: 5m
@@ -198,7 +198,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: software-component-mesh-controlplane-configuration
+    - name: software-component-mesh-monitoring
   interval: 1h
   retryInterval: 1m
   timeout: 5m
