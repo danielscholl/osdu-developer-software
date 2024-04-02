@@ -5,7 +5,7 @@ metadata:
   namespace: istio-system
 spec:
   selector:
-    istio: istio-ingressgateway-internal
+    istio: ingressgateway
   servers:
     - port:
         name: http
@@ -13,22 +13,22 @@ spec:
         protocol: HTTP
       hosts:
         - "*"    
----
-apiVersion: networking.istio.io/v1alpha3
-kind: Gateway
-metadata:
-  name: external-gateway
-  namespace: istio-system
-spec:
-  selector:
-    istio: istio-ingressgateway-external
-  servers:
-    - port:
-        name: http
-        number: 80
-        protocol: HTTP
-      hosts:
-        - "*"
+# ---
+# apiVersion: networking.istio.io/v1alpha3
+# kind: Gateway
+# metadata:
+#   name: external-gateway
+#   namespace: istio-system
+# spec:
+#   selector:
+#     istio: istio-ingressgateway-external
+#   servers:
+#     - port:
+#         name: http
+#         number: 80
+#         protocol: HTTP
+#       hosts:
+#         - "*"
   # - port:
   #   number: 443
   #   name: https
