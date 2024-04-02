@@ -17,7 +17,7 @@ spec:
         httpsRedirect: true # sends 301 redirect for http requests
     - port:
         name: https
-        number: 443
+        number: 8443
         protocol: HTTPS
       hosts:
         - "*"
@@ -42,7 +42,7 @@ spec:
         - "*"
     - port:
         name: https
-        number: 443
+        number: 8443
         protocol: HTTPS
       hosts:
         - "*"
