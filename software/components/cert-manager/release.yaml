@@ -28,13 +28,16 @@ spec:
   chart:
     spec:
       chart: cert-manager-istio-csr
-      version: "1.13.x"
+      # version: "1.13.x"
       sourceRef:
         kind: HelmRepository
         name: cert-manager
         namespace: flux-system
       interval: 1h0m0s
   values:
-    app.certmanager.issuer.name: istio-ca
-    app.certmanager.kind.name: Issuer
-    app.certmanager.group.name: cert-manager.io
+    app:
+      certmanager:
+        issuer:
+          name: istio-ca
+          kind: Issuer
+          group: cert-manager.io
