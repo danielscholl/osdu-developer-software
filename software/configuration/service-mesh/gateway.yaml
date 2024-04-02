@@ -13,6 +13,8 @@ spec:
         protocol: HTTP
       hosts:
         - "*"
+      tls:
+        httpsRedirect: true # sends 301 redirect for http requests
     - port:
         name: https
         number: 443
