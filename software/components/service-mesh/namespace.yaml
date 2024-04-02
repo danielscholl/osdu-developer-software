@@ -4,6 +4,7 @@ kind: Namespace
 metadata:
   name: istio-operator
   labels:
+    istio-injection: disabled
     toolkit.fluxcd.io/tenant: sre-team
 ---
 apiVersion: v1
