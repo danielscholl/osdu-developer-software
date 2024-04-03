@@ -1,47 +1,49 @@
+# flux create hr istio-base \
+#     --interval=10m \
+#     --source=HelmRepository/istio \
+#     --chart=istio/base 
+
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: istio-base
-  namespace: istio-system
 spec:
   releaseName: istio-base
   chart:
     spec:
-      chart: istio/base
+      chart: base
       sourceRef:
         kind: HelmRepository
         name: istio
-        namespace: flux-system
   interval: 1h0m0s
   install:
     remediation:
       retries: 3
   values:
     defaultRevision: default
-# ---
-# apiVersion: helm.toolkit.fluxcd.io/v2beta1
-# kind: HelmRelease
-# metadata:
-#   name: cert-manager-istio-csr
-#   namespace: istio-system
-# spec:
-#   interval: 30m
-#   chart:
-#     spec:
-#       chart: jetstack/cert-manager-istio-csr
-#       sourceRef:
-#         kind: HelmRepository
-#         name: istio
-#         namespace: flux-system
-#       interval: 1h0m0s
-#   values:
-#     app:
-#       certmanager:
-#         issuer:
-#           name: istio-ca
-#           kind: Issuer
-#           group: cert-manager.io
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: cert-manager-istio-csr
+  namespace: istio-system
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: jetstack/cert-manager-istio-csr
+      sourceRef:
+        kind: HelmRepository
+        name: istio
+      interval: 1h0m0s
+  values:
+    app:
+      certmanager:
+        issuer:
+          name: istio-ca
+          kind: Issuer
+          group: cert-manager.io
 # ---
 # apiVersion: helm.toolkit.fluxcd.io/v2beta1
 # kind: HelmRelease
