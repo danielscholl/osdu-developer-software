@@ -22,29 +22,29 @@ spec:
 ######################
 ## Cache Component
 ######################
-# ---
-# apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-# kind: Kustomization
-# metadata:
-#   name: software-component-cache
-#   namespace: flux-system
-# spec:
-#   interval: 1h
-#   retryInterval: 1m
-#   timeout: 5m
-#   sourceRef:
-#     kind: GitRepository
-#     name: flux-system
-#   path: ./software/components/redis-cluster
-#   prune: true
-#   wait: true
-#   healthChecks:
-#     - kind: StatefulSet
-#       name: redis-master
-#       namespace: redis-cluster
-#     - kind: StatefulSet
-#       name: redis-replicas
-#       namespace: redis-cluster
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: software-component-cache
+  namespace: flux-system
+spec:
+  interval: 1h
+  retryInterval: 1m
+  timeout: 5m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./software/components/redis-cluster
+  prune: true
+  wait: true
+  healthChecks:
+    - kind: StatefulSet
+      name: redis-master
+      namespace: redis-cluster
+    - kind: StatefulSet
+      name: redis-replicas
+      namespace: redis-cluster
 
 
 ######################
