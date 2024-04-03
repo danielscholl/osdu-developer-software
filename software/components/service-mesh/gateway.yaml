@@ -13,11 +13,11 @@ spec:
         protocol: HTTP
       hosts:
         - "*"
-      tls:
-        httpsRedirect: true # sends 301 redirect for http requests
+      # tls:
+      #   httpsRedirect: true # sends 301 redirect for http requests
     - port:
         name: https
-        number: 8443
+        number: 443
         protocol: HTTPS
       hosts:
         - "*"
