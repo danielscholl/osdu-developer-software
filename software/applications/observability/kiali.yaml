@@ -21,16 +21,16 @@ spec:
   external_services:
     istio:
       root_namespace: istio-system
-      # config_map_name: istio
-      # istio_sidecar_injector_config_map_name: istio-sidecar-injector
-      # istiod_deployment_name: istiod
+      config_map_name: istio
+      istio_sidecar_injector_config_map_name: istio-sidecar-injector
+      istiod_deployment_name: istiod
       component_status:
         enabled: true
         components:
-        - app_label: istio-ingressgateway
+        - app_label: istio-ingress
           is_core: true
           is_proxy: true
-          namespace: istio-system
+          namespace: istio-ingress
     grafana:
       in_cluster_url: http://prometheus-operator-grafana.observability.svc:80
       url: http://prometheus-operator-grafana.observability.svc:80
