@@ -185,19 +185,19 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./software/components/monitoring
+  path: ./software/components/observability
   prune: true
   wait: true
   healthChecks:
     - kind: Deployment
       name: prometheus-operator-grafana
-      namespace: monitoring
+      namespace: observability
     - kind: Deployment
       name: prometheus-operator-kube-p-operator
-      namespace: monitoring
+      namespace: observability
     - kind: Deployment
       name: prometheus-operator-kube-p-operator
-      namespace: monitoring
+      namespace: observability
     - kind: Deployment
       name: kiali-operator
-      namespace: monitoring
+      namespace: observability

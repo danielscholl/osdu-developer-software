@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: prometheus-operator
-  namespace: monitoring
+  namespace: observability
 spec:
   releaseName: prometheus-operator
   chart:
@@ -57,7 +57,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: jaeger-operator
-  namespace: monitoring
+  namespace: observability
 spec:
   releaseName: jaeger-operator
   chart:
@@ -76,7 +76,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: kiali-operator
-  namespace: monitoring
+  namespace: observability
 spec:
   releaseName: kiali-operator
   chart:

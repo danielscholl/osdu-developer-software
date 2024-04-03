@@ -1,26 +1,26 @@
 ######################
 ## Monitoring App 
 ######################
-# ---
-# apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-# kind: Kustomization
-# metadata:
-#   name: application-component-monitoring
-#   namespace: flux-system
-# spec:
-#   interval: 1h
-#   retryInterval: 1m
-#   timeout: 5m
-#   sourceRef:
-#     kind: GitRepository
-#     name: flux-system
-#   path: ./software/applications/monitoring
-#   prune: true
-#   wait: true
-#   healthChecks:
-#     - kind: Deployment
-#       name: kiali
-#       namespace: monitoring
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: application-monitoring
+  namespace: flux-system
+spec:
+  interval: 1h
+  retryInterval: 1m
+  timeout: 5m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./software/applications/observability
+  prune: true
+  wait: true
+  healthChecks:
+    - kind: Deployment
+      name: kiali
+      namespace: monitoring
 
 
 ######################
@@ -30,7 +30,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: application-component-podinfo
+  name: application-podinfo
   namespace: flux-system
 spec:
   interval: 1h
