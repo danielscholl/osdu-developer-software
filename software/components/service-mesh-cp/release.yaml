@@ -7,6 +7,9 @@ metadata:
 spec:
   targetNamespace: istio-system
   releaseName: istiod
+  dependsOn:
+    - name: istio-base
+      namespace: flux-system
   chart:
     spec:
       chart: istio/istiod
@@ -18,11 +21,11 @@ spec:
   install:
     remediation:
       retries: 3
-  values:
-    profile: default
-    meshConfig:
-      ingressSelector: istio-ingress
-      ingressService: istio-ingressgateway
-    pilot:
-      env:
-        K8S_INGRESS_NS: istio-ingress
+  # values:
+  #   profile: default
+  #   meshConfig:
+  #     ingressSelector: istio-ingress
+  #     ingressService: istio-ingressgateway
+  #   pilot:
+  #     env:
+  #       K8S_INGRESS_NS: istio-ingress
