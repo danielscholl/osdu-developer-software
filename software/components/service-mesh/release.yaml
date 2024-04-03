@@ -16,6 +16,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: istio
+        namespace: flux-system
   interval: 1h0m0s
   install:
     remediation:
@@ -36,6 +37,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: istio
+        namespace: flux-system
       interval: 1h0m0s
   values:
     app:
