@@ -106,9 +106,20 @@ spec:
     remediation:
       retries: 3
   values:
-    global:
-      hub: docker.io/istio
-    gateways:
-      istio-ingressgateway:
-        serviceAnnotations:
-          service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+    service:
+      type: LoadBalancer
+      ports:
+      - name: status-port
+        port: 15021
+        protocol: TCP
+        targetPort: 15021
+      - name: http2
+        port: 80
+        protocol: TCP
+        targetPort: 80
+      - name: https
+        port: 443
+        protocol: TCP
+        targetPort: 443
+      annotations: 
+        service.beta.kubernetes.io/azure-load-balancer-internal: 'true'
