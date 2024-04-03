@@ -82,3 +82,27 @@ spec:
     pilot:
       env:
         K8S_INGRESS_NS: istio-ingress
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: istio-ingress
+  namespace: istio-ingress
+spec:
+  dependsOn:
+    - name: istio-base
+      namespace: istio-system
+    - name: istiod
+      namespace: istio-system
+  chart:
+    spec:
+      chart: gateway
+      sourceRef:
+        kind: HelmRepository
+        name: istio
+        namespace: flux-system
+      interval: 1m
+  install:
+    remediation:
+      retries: 3
+  interval: 10m0s
