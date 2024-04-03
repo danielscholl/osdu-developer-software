@@ -186,34 +186,27 @@ spec:
     - kind: Deployment
       name: cert-manager-istio-csr
       namespace: cert-manager
-# ---
-# apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-# kind: Kustomization
-# metadata:
-#   name: component-mesh-cp
-#   namespace: flux-system
-# spec:
-#   dependsOn:
-#     - name: component-mesh-base
-#     - name: component-mesh-certs
-#   interval: 1h
-#   retryInterval: 1m
-#   timeout: 5m
-#   sourceRef:
-#     kind: GitRepository
-#     name: flux-system
-#   path: ./software/components/service-mesh-cp
-#   prune: true
-#   healthChecks:
-#     - kind: Deployment
-#       name: istiod
-  #     namespace: istio-system
-  #   - kind: Deployment
-  #     name: istio-ingressgateway
-  #     namespace: istio-system
-    # - kind: Deployment
-    #   name: istio-ingressgateway-external
-    #   namespace: istio-system
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: component-mesh-cp
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: component-mesh-base
+    - name: component-mesh-certs
+  interval: 1h
+  retryInterval: 1m
+  timeout: 5m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./software/components/service-mesh-cp
+  prune: true
+  healthChecks:
+    - kind: Deployment
+      name: istiod
 # ---
 # apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 # kind: Kustomization
