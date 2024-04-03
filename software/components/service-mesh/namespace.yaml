@@ -13,7 +13,7 @@ metadata:
   name: istio-system
   labels:
     istio-injection: disabled
-    toolkit.fluxcd.io/tenant: sre-team
+    toolkit.fluxcd.io/tenant: component
 ---
 apiVersion: v1
 kind: Namespace
@@ -21,4 +21,4 @@ metadata:
   name: istio-ingress
   labels:
     istio-injection: disabled
-    toolkit.fluxcd.io/tenant: sre-team
+    toolkit.fluxcd.io/tenant: component
