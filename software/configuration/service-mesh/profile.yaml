@@ -7,12 +7,11 @@ metadata:
 spec:
   profile: minimal
   hub: docker.io/istio
-  tag: 1.21.0
+  tag: 1.20.2
   meshConfig:
     trustDomain: cluster.local
-    ingressService: istio-ingressgateway
-    ingressControllerMode: DEFAULT
-    inboundTrafficPolicyMode: LOCALHOST
+    # ingressService: istio-ingressgateway
+    # ingressControllerMode: DEFAULT
     # ingressClass: external-istio
   values:
     global:
