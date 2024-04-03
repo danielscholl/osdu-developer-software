@@ -166,108 +166,38 @@ spec:
     - kind: Deployment
       name: istiod
       namespace: istio-system
+    - kind: Deployment
+      name: istio-ingress
+      namespace: istio-ingress
 
-
-
-
-
-
-# ---
-# apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-# kind: Kustomization
-# metadata:
-#   name: component-mesh-base
-#   namespace: flux-system
-# spec:
-#   interval: 1h
-#   retryInterval: 1m
-#   timeout: 5m
-#   sourceRef:
-#     kind: GitRepository
-#     name: flux-system
-#   path: ./software/components/service-mesh-base
-#   prune: true
-#   wait: true
-
-# ---
-# apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-# kind: Kustomization
-# metadata:
-#   name: component-mesh-certs
-#   namespace: flux-system
-# spec:
-#   dependsOn:
-#     - name: component-certs
-#     - name: component-mesh-base
-#   interval: 1h
-#   retryInterval: 1m
-#   timeout: 5m
-#   sourceRef:
-#     kind: GitRepository
-#     name: flux-system
-#   path: ./software/components/service-mesh-certs
-#   prune: true
-#   wait: true
-#   healthChecks:
-#     - kind: Deployment
-#       name: cert-manager-istio-csr
-#       namespace: cert-manager
-# ---
-# apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-# kind: Kustomization
-# metadata:
-#   name: component-mesh-cp
-#   namespace: flux-system
-# spec:
-#   dependsOn:
-#     - name: component-mesh-base
-#     - name: component-mesh-certs
-#   interval: 1h
-#   retryInterval: 1m
-#   timeout: 5m
-#   sourceRef:
-#     kind: GitRepository
-#     name: flux-system
-#   path: ./software/components/service-mesh-cp
-#   prune: true
-#   healthChecks:
-#     - kind: Deployment
-#       name: istiod
-#       namespace: istio-system
-
-
-
-# ---
-# apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-# kind: Kustomization
-# metadata:
-#   name: software-component-mesh-monitoring
-#   namespace: flux-system
-# spec:
-#   dependsOn:
-#     - name: software-component-mesh
-#     - name: software-component-mesh-certs
-#     - name: software-component-mesh-certs-config
-#     - name: software-component-mesh-cp-config
-#   interval: 1h
-#   retryInterval: 1m
-#   timeout: 5m
-#   sourceRef:
-#     kind: GitRepository
-#     name: flux-system
-#   path: ./software/components/monitoring
-#   prune: true
-#   wait: true
-#   healthChecks:
-#     - kind: Deployment
-#       name: prometheus-operator-grafana
-#       namespace: monitoring
-#     - kind: Deployment
-#       name: prometheus-operator-kube-p-operator
-#       namespace: monitoring
-#     - kind: Deployment
-#       name: prometheus-operator-kube-p-operator
-#       namespace: monitoring
-#     - kind: Deployment
-#       name: kiali-operator
-#       namespace: monitoring
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: component-observability
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: component-mesh
+  interval: 1h
+  retryInterval: 1m
+  timeout: 5m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./software/components/monitoring
+  prune: true
+  wait: true
+  healthChecks:
+    - kind: Deployment
+      name: prometheus-operator-grafana
+      namespace: monitoring
+    - kind: Deployment
+      name: prometheus-operator-kube-p-operator
+      namespace: monitoring
+    - kind: Deployment
+      name: prometheus-operator-kube-p-operator
+      namespace: monitoring
+    - kind: Deployment
+      name: kiali-operator
+      namespace: monitoring
