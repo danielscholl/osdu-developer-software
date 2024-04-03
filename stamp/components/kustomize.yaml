@@ -202,7 +202,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./software/configuration/service-mesh
+  path: ./software/components/service-mesh-cp
   prune: true
   # healthChecks:
   #   - kind: Deployment
