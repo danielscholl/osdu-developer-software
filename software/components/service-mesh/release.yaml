@@ -34,10 +34,10 @@ spec:
   interval: 30m
   chart:
     spec:
-      chart: jetstack/cert-manager-istio-csr
+      chart: cert-manager-istio-csr
       sourceRef:
         kind: HelmRepository
-        name: istio
+        name: jetstack
         namespace: flux-system
       interval: 1h0m0s
   values:
