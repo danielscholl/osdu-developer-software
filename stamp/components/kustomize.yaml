@@ -71,43 +71,43 @@ spec:
 ######################
 ## Elastic Component
 ######################
-# ---
-# apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-# kind: Kustomization
-# metadata:
-#   name: software-component-elastic
-#   namespace: flux-system
-# spec:
-#   interval: 1h
-#   retryInterval: 1m
-#   timeout: 5m
-#   sourceRef:
-#     kind: GitRepository
-#     name: flux-system
-#   path: ./software/components/elastic
-#   prune: true
-#   wait: true
-#   healthChecks:
-#     - kind: StatefulSet
-#       name: elastic-system
-#       namespace: elastic-operator
-# ---
-# apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-# kind: Kustomization
-# metadata:
-#   name: software-component-elastic-config
-#   namespace: flux-system
-# spec:
-#   dependsOn:
-#     - name: software-component-elastic
-#   interval: 1h
-#   retryInterval: 1m
-#   timeout: 5m
-#   sourceRef:
-#     kind: GitRepository
-#     name: flux-system
-#   path: ./software/configuration/elastic
-#   prune: true
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: component-elastic
+  namespace: flux-system
+spec:
+  interval: 1h
+  retryInterval: 1m
+  timeout: 5m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./software/components/elastic
+  prune: true
+  wait: true
+  healthChecks:
+    - kind: StatefulSet
+      name: elastic-system
+      namespace: elastic-operator
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: component-elastic-config
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: component-elastic
+  interval: 1h
+  retryInterval: 1m
+  timeout: 5m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./software/configuration/elastic
+  prune: true
 
 
 ######################
