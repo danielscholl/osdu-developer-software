@@ -5,22 +5,14 @@ metadata:
   name: istio-profile
   namespace: istio-system
 spec:
-  profile: minimal
-  hub: docker.io/istio
-  tag: 1.20.2
-  meshConfig:
-    trustDomain: cluster.local
-    # ingressService: istio-ingressgateway
-    # ingressControllerMode: DEFAULT
-    # ingressClass: external-istio
-  values:
-    global:
-      caAddress: cert-manager-istio-csr.cert-manager.svc:443
   components:
-    pilot:
+    base:
       enabled: true
     cni:
       enabled: false
+    egressGateways:
+      - name: istio-egressgateway
+        enabled: false
     ingressGateways:
       - name: istio-ingressgateway
         enabled: true
@@ -44,6 +36,22 @@ spec:
       #   k8s:
       #     hpaSpec:
       #       minReplicas: 1
-    egressGateways:
-      - name: istio-egressgateway
-        enabled: false
+    pilot:
+      enabled: true
+  hub: docker.io/istio  
+  profile: minimal
+  tag: 1.21.0
+  meshConfig:
+    trustDomain: cluster.local
+    # ingressService: istio-ingressgateway
+    # ingressControllerMode: DEFAULT
+    # ingressClass: external-istio
+  values:
+    defaultRevision: ""
+    gateways:
+      istio-egressgateway: {}
+      istio-ingressgateway: {}
+    global:
+      caAddress: cert-manager-istio-csr.cert-manager.svc:443
+      configValidation: true
+      istioNamespace: istio-system
