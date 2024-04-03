@@ -6,6 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: elastic-system
+  releaseName: elastic-operator
   chart:
     spec:
       chart: ./deploy/eck-operator
@@ -17,4 +18,4 @@ spec:
     remediation:
       retries: 3
   interval: 10m0s
-  releaseName: elastic-operator
+  
