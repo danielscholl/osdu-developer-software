@@ -12,19 +12,11 @@ spec:
     trustDomain: cluster.local
     ingressService: istio-ingressgateway
     ingressControllerMode: DEFAULT
+    inboundTrafficPolicyMode: LOCALHOST
     # ingressClass: external-istio
   values:
     global:
       caAddress: cert-manager-istio-csr.cert-manager.svc:443
-    sidecarInjectorWebhook:
-      templates:
-        custom: |
-          spec:
-            containers:
-            - name: istio-proxy
-              env:
-              - name: InboundTrafficPolicyMode
-                value: localhost
   components:
     pilot:
       enabled: true
