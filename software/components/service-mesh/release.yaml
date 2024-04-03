@@ -58,7 +58,7 @@ metadata:
   name: istiod
   namespace: istio-system
 spec:
-  targetNamespace: istio-system
+  # targetNamespace: istio-system
   releaseName: istiod
   dependsOn:
     - name: istio-base
@@ -75,7 +75,7 @@ spec:
   # install:
   #   remediation:
   #     retries: 3
-  # interval: 10m0s
+  interval: 10m0s
   # values:
   #   profile: default
   #   meshConfig:
