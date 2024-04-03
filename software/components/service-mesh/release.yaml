@@ -72,15 +72,15 @@ spec:
         kind: HelmRepository
         name: istio
         namespace: flux-system
-  interval: 1h0m0s
-  install:
-    remediation:
-      retries: 3
-  values:
-    profile: default
-    meshConfig:
-      ingressSelector: istio-ingress
-      ingressService: istio-ingressgateway
-    pilot:
-      env:
-        K8S_INGRESS_NS: istio-ingress
+  # install:
+  #   remediation:
+  #     retries: 3
+  # interval: 10m0s
+  # values:
+  #   profile: default
+  #   meshConfig:
+  #     ingressSelector: istio-ingress
+  #     ingressService: istio-ingressgateway
+  #   pilot:
+  #     env:
+  #       K8S_INGRESS_NS: istio-ingress
