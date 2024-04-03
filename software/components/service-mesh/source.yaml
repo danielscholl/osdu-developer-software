@@ -9,3 +9,12 @@ spec:
   url: https://github.com/istio/istio
   ref:
     branch: master
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: istio
+  namespace: flux-system
+spec:
+  interval: 10m
+  url: https://istio-release.storage.googleapis.com/charts
