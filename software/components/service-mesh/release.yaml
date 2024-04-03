@@ -39,7 +39,7 @@ spec:
       chart: cert-manager-istio-csr
       sourceRef:
         kind: HelmRepository
-        name: jetstack
+        name: cert-manager
         namespace: flux-system
   interval: 1h0m0s
   install:
