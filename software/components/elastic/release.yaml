@@ -17,4 +17,4 @@ spec:
     remediation:
       retries: 3
   interval: 10m0s
-  releaseName: redis
+  releaseName: elastic-operator
