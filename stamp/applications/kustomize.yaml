@@ -95,3 +95,22 @@ spec:
   path: ./software/applications/osdu-azure
   prune: true
   wait: true
+  healthChecks:
+    - kind: Deployment
+      name: default
+      namespace: osdu-azure
+    - kind: Deployment
+      name: partition
+      namespace: osdu-azure
+    - kind: Deployment
+      name: entitlements
+      namespace: osdu-azure
+    - kind: Deployment
+      name: legal
+      namespace: osdu-azure
+    - kind: Deployment
+      name: schema
+      namespace: osdu-azure
+    - kind: Deployment
+      name: file
+      namespace: osdu-azure
