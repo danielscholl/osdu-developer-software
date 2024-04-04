@@ -191,10 +191,10 @@ spec:
   path: ./software/components/observability
   prune: true
   wait: true
-#   healthChecks:
-#     - kind: Deployment
-#       name: prometheus-operator-grafana
-#       namespace: observability
+  healthChecks:
+    - kind: Deployment
+      name: prometheus
+      namespace: istio-system
 #     - kind: Deployment
 #       name: prometheus-operator-kube-p-operator
 #       namespace: observability
