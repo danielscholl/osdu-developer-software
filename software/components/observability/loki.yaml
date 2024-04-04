@@ -4,6 +4,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: loki
+  namespace: istio-system
   labels:
     helm.sh/chart: loki-4.8.0
     app.kubernetes.io/name: loki
@@ -17,6 +18,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: loki
+  namespace: istio-system
   labels:
     helm.sh/chart: loki-4.8.0
     app.kubernetes.io/name: loki
@@ -76,6 +78,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: loki-runtime
+  namespace: istio-system
   labels:
     helm.sh/chart: loki-4.8.0
     app.kubernetes.io/name: loki
@@ -92,6 +95,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: loki-memberlist
+  namespace: istio-system
   labels:
     helm.sh/chart: loki-4.8.0
     app.kubernetes.io/name: loki
@@ -141,6 +145,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: loki
+  namespace: istio-system
   labels:
     helm.sh/chart: loki-4.8.0
     app.kubernetes.io/name: loki
@@ -168,6 +173,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: loki
+  namespace: istio-system
   labels:
     helm.sh/chart: loki-4.8.0
     app.kubernetes.io/name: loki
