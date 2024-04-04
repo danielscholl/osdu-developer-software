@@ -2,10 +2,10 @@ apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
   name: internal-gateway
-  namespace: istio-ingress
+  namespace: istio-ingress-internal
 spec:
   selector:
-    istio: istio-ingressgateway-internal
+    istio: istio-ingress
   servers:
     - port:
         name: http2
@@ -29,10 +29,10 @@ apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
   name: external-gateway
-  namespace: istio-system
+  namespace: istio-ingress-external
 spec:
   selector:
-    istio: istio-ingressgateway-external
+    istio: istio-ingress
   servers:
     - port:
         name: http

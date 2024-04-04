@@ -10,6 +10,13 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: istio-ingress
+  name: istio-ingress-internal
+  labels:
+    toolkit.fluxcd.io/tenant: component
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: istio-ingress-external
   labels:
     toolkit.fluxcd.io/tenant: component
