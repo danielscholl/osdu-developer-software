@@ -106,8 +106,12 @@ spec:
     remediation:
       retries: 3
   values:
-    service:
-      type: LoadBalancer
+    gateways:
+      istio-ingressgateway:
+         name: istio-ingressgateway-internal
+      labels:
+        app: istio-ingressgateway-internal
+        istio: ingressgateway-internal
       ports:
       - name: status-port
         port: 15021
@@ -121,5 +125,23 @@ spec:
         port: 443
         protocol: TCP
         targetPort: 443
-      annotations: 
+      serviceAnnotations:
         service.beta.kubernetes.io/azure-load-balancer-internal: 'true'
+
+    # service:
+    #   type: LoadBalancer
+    #   ports:
+    #   - name: status-port
+    #     port: 15021
+    #     protocol: TCP
+    #     targetPort: 15021
+    #   - name: http2
+    #     port: 80
+    #     protocol: TCP
+    #     targetPort: 80
+    #   - name: https
+    #     port: 443
+    #     protocol: TCP
+    #     targetPort: 443
+    #   annotations: 
+    #     service.beta.kubernetes.io/azure-load-balancer-internal: 'true'
