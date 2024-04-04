@@ -201,4 +201,7 @@ spec:
     - kind: Deployment
       name: jaeger
       namespace: istio-system
+    - kind: Service
+      name: loki
+      namespace: istio-system
 
