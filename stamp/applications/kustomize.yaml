@@ -98,19 +98,19 @@ spec:
   healthChecks:
     - kind: Deployment
       name: default
-      namespace: osdu-azure
+      namespace: osdu-core
     - kind: Deployment
       name: partition
-      namespace: osdu-azure
+      namespace: osdu-core
     - kind: Deployment
       name: entitlements
-      namespace: osdu-azure
+      namespace: osdu-core
     - kind: Deployment
       name: legal
-      namespace: osdu-azure
+      namespace: osdu-core
     - kind: Deployment
       name: schema
-      namespace: osdu-azure
+      namespace: osdu-core
     - kind: Deployment
       name: file
-      namespace: osdu-azure
+      namespace: osdu-core

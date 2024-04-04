@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: osdu-azure
+  name: osdu-core
   labels:
     toolkit.fluxcd.io/tenant: dev-team
     istio-injection: enabled
