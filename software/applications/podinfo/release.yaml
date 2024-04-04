@@ -24,11 +24,11 @@ spec:
     }
     logLevel: debug
     # Redis address in the format tcp://<host>:<port>
-    # cache: "tcp://redis-master:6379"
-    redis:
-      enabled: true
-      repository: public.ecr.aws/docker/library/redis
-      tag: 7.0.6
+    cache: "tcp://redis-master.redis-cluster.svc.cluster.local:6379"
+    # redis:
+    #   enabled: true
+    #   repository: public.ecr.aws/docker/library/redis
+    #   tag: 7.0.6
     ingress:
       enabled: true
       className: nginx
