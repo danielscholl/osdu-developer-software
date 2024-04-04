@@ -198,4 +198,7 @@ spec:
     - kind: Deployment
       name: grafana
       namespace: istio-system
+    - kind: Deployment
+      name: jaeger
+      namespace: istio-system
 
