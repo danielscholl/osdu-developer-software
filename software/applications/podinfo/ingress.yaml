@@ -8,7 +8,7 @@ spec:
     - "*"
   gateways:
     - istio-ingress/internal-gateway
-    # - istio-system/external-gateway
+    - istio-system/external-gateway
   http:
     - match:
         - uri:
