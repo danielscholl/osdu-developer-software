@@ -170,34 +170,34 @@ spec:
       name: istio-ingress
       namespace: istio-ingress
 
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-kind: Kustomization
-metadata:
-  name: component-observability
-  namespace: flux-system
-spec:
-  dependsOn:
-    - name: component-mesh
-  interval: 1h
-  retryInterval: 1m
-  timeout: 5m
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./software/components/observability
-  prune: true
-  wait: true
-  healthChecks:
-    - kind: Deployment
-      name: prometheus-operator-grafana
-      namespace: observability
-    - kind: Deployment
-      name: prometheus-operator-kube-p-operator
-      namespace: observability
-    - kind: Deployment
-      name: prometheus-operator-kube-p-operator
-      namespace: observability
-    - kind: Deployment
-      name: kiali-operator
-      namespace: observability
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+# kind: Kustomization
+# metadata:
+#   name: component-observability
+#   namespace: flux-system
+# spec:
+#   dependsOn:
+#     - name: component-mesh
+#   interval: 1h
+#   retryInterval: 1m
+#   timeout: 5m
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./software/components/observability
+#   prune: true
+#   wait: true
+#   healthChecks:
+#     - kind: Deployment
+#       name: prometheus-operator-grafana
+#       namespace: observability
+#     - kind: Deployment
+#       name: prometheus-operator-kube-p-operator
+#       namespace: observability
+#     - kind: Deployment
+#       name: prometheus-operator-kube-p-operator
+#       namespace: observability
+#     - kind: Deployment
+#       name: kiali-operator
+#       namespace: observability
