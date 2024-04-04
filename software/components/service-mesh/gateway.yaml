@@ -5,7 +5,7 @@ metadata:
   namespace: istio-ingress-internal
 spec:
   selector:
-    istio: istio-ingress
+    istio: ingress-internal
   servers:
     - port:
         name: http2
