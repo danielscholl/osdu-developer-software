@@ -166,9 +166,9 @@ spec:
     - kind: Deployment
       name: istiod
       namespace: istio-system
-    - kind: Deployment
-      name: istio-ingress
-      namespace: istio-ingress
+    # - kind: Deployment
+    #   name: istio-ingress
+    #   namespace: istio-ingress
 
 # ---
 # apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
