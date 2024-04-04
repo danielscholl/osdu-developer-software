@@ -23,9 +23,9 @@ spec:
       app: podinfo
     }
     # Redis address in the format tcp://<host>:<port>
-    cache: "tcp://172.16.134.94:6379"
+    # cache: "tcp://172.16.134.94:6379"
     redis:
-      enabled: false
+      enabled: true
       repository: public.ecr.aws/docker/library/redis
       tag: 7.0.6
     ingress:
