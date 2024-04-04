@@ -195,12 +195,7 @@ spec:
     - kind: Deployment
       name: prometheus
       namespace: istio-system
-#     - kind: Deployment
-#       name: prometheus-operator-kube-p-operator
-#       namespace: observability
-#     - kind: Deployment
-#       name: prometheus-operator-kube-p-operator
-#       namespace: observability
-#     - kind: Deployment
-#       name: kiali-operator
-#       namespace: observability
+    - kind: Deployment
+      name: grafana
+      namespace: istio-system
+
