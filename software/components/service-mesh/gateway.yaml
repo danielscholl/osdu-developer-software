@@ -5,7 +5,7 @@ metadata:
   namespace: istio-ingress
 spec:
   selector:
-    istio: ingress
+    istio: istio-ingressgateway-internal
   servers:
     - port:
         name: http2
@@ -24,22 +24,22 @@ spec:
     #   tls:
     #     mode: SIMPLE
     #     credentialName: wild-card-tls
-# ---
-# apiVersion: networking.istio.io/v1alpha3
-# kind: Gateway
-# metadata:
-#   name: external-gateway
-#   namespace: istio-system
-# spec:
-#   selector:
-#     istio: istio-ingressgateway-external
-#   servers:
-#     - port:
-#         name: http
-#         number: 80
-#         protocol: HTTP
-#       hosts:
-#         - "*"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: external-gateway
+  namespace: istio-system
+spec:
+  selector:
+    istio: istio-ingressgateway-external
+  servers:
+    - port:
+        name: http
+        number: 80
+        protocol: HTTP
+      hosts:
+        - "*"
     # - port:
     #     name: https
     #     number: 8443
