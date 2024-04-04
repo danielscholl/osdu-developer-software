@@ -23,7 +23,7 @@ spec:
       app: podinfo
     }
     # Redis address in the format tcp://<host>:<port>
-    cache: "tcp://redis-replicas-0.redis-replicas.redis-cluster.svc.cluster.local:6379"
+    cache: "tcp://redis-headless:6379"
     redis:
       enabled: false
       repository: public.ecr.aws/docker/library/redis
