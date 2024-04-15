@@ -5,7 +5,7 @@ serviceAccount:
   name: "workload-identity-sa"
 azure:
   tenantId: 72f988bf-86f1-41af-91ab-2d7cd011db47
-  clientId: 47f065ec-1dfe-4420-8997-aa6b55692a38
-  configEndpoint: https://ac-serviceihaxiee5iv5k2.azconfig.io
-  keyvaultUri: https://kv-commonctr3qrng3m7u6.vault.azure.net/
-  keyvaultName: kv-commonctr3qrng3m7u6
+  clientId: 5b79904a-50a9-47f2-8040-e0b9371c4f09
+  configEndpoint: https://ac-servicebladercdemeewyedba.azconfig.io
+  keyvaultUri: https://kv-commonbladeiklzrxrdej.vault.azure.net/
+  keyvaultName: kv-commonbladeiklzrxrdej
